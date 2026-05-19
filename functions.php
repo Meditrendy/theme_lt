@@ -2,13 +2,13 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Load parent + child styles
+ * Load parent + child styles and scripts
  */
 
 add_action( 'wp_enqueue_scripts', 'meditrendy_child_styles' );
+add_action( 'wp_footer', 'meditrendy_filter_script_tag', 99 );
 
 function meditrendy_child_styles() {
-
     wp_enqueue_style(
         'parent-style',
         get_template_directory_uri() . '/style.css'
@@ -17,10 +17,47 @@ function meditrendy_child_styles() {
     wp_enqueue_style(
         'child-style',
         get_stylesheet_uri(),
-        array('parent-style')
+        array('parent-style'),
+        filemtime( get_stylesheet_directory() . '/style.css' )
     );
 
+    $filters_css_path = get_stylesheet_directory() . '/styles/filters.css';
+
+    if ( file_exists( $filters_css_path ) ) {
+        wp_enqueue_style(
+            'meditrendy-filters',
+            get_stylesheet_directory_uri() . '/styles/filters.css',
+            array('child-style'),
+            filemtime( $filters_css_path )
+        );
+    }
+
+    $filters_js_path = get_stylesheet_directory() . '/scripts/filters.js';
+
+    if ( file_exists( $filters_js_path ) ) {
+        wp_enqueue_script(
+            'meditrendy-filters-js',
+            get_stylesheet_directory_uri() . '/scripts/filters.js',
+            array(),
+            filemtime( $filters_js_path ),
+            true
+        );
+    }
 }
+
+function meditrendy_filter_script_tag() {
+    $filters_js_path = get_stylesheet_directory() . '/scripts/filters.js';
+
+    if ( ! file_exists( $filters_js_path ) ) {
+        return;
+    }
+
+    printf(
+        '<script id="meditrendy-filters-fallback" src="%s"></script>' . "\n",
+        esc_url( get_stylesheet_directory_uri() . '/scripts/filters.js?ver=' . filemtime( $filters_js_path ) )
+    );
+}
+
 /* =========================================
     przyciski ilości produktu w single cart
    ========================================= */
