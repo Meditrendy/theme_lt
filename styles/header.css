@@ -1,0 +1,7 @@
+.x-anchor {
+    overflow: visible !important;
+
+    .x-anchor-content {
+        overflow: visible;
+    }
+}

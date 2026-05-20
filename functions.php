@@ -21,6 +21,17 @@ function meditrendy_child_styles() {
         filemtime( get_stylesheet_directory() . '/style.css' )
     );
 
+    $header_css_path = get_stylesheet_directory() . '/styles/header.css';
+
+    if ( file_exists( $header_css_path ) ) {
+        wp_enqueue_style(
+            'meditrendy-filters',
+            get_stylesheet_directory_uri() . '/styles/header.css',
+            array('child-style'),
+            filemtime( $header_css_path )
+        );
+    }
+
     $filters_css_path = get_stylesheet_directory() . '/styles/filters.css';
 
     if ( file_exists( $filters_css_path ) ) {
