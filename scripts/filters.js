@@ -73,6 +73,10 @@
   }
 
   function setupPanel(panel) {
+    if (!panel.querySelector('.berocket_single_filter_widget, .bapf_sfilter, .bapf_button.bapf_reset')) {
+      return false;
+    }
+
     if (panel.dataset.mtFiltersReady === '1') return;
 
     panel.dataset.mtFiltersReady = '1';
@@ -136,14 +140,17 @@
     });
 
     setMode(panel);
+
+    return true;
   }
 
   function initFilters() {
     setDocumentMode();
 
     document.querySelectorAll(filterSelector).forEach(function (panel) {
-      setupPanel(panel);
-      setMode(panel);
+      if (setupPanel(panel) || panel.dataset.mtFiltersReady === '1') {
+        setMode(panel);
+      }
     });
   }
 
