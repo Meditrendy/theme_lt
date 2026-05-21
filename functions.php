@@ -1,100 +1,13 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+require_once get_stylesheet_directory() . '/modules/mobile-menu.php';
+
 /**
  * Load parent + child styles and scripts
  */
 
 add_action( 'wp_enqueue_scripts', 'meditrendy_child_styles' );
-add_action( 'wp_head', 'meditrendy_early_mobile_menu_toggle', 0 );
-add_action( 'wp_footer', 'meditrendy_filter_script_tag', 99 );
-
-function meditrendy_early_mobile_menu_toggle() {
-    if ( is_admin() ) {
-        return;
-    }
-    ?>
-    <script>
-    (function () {
-      var lastPointerToggle = 0;
-
-      function toggleClass(element, className, state) {
-        if (!element || !element.classList) return;
-        element.classList.toggle(className, state);
-      }
-
-      function setToggleState(id, state) {
-        document.querySelectorAll('[data-x-toggleable="' + id + '"]').forEach(function (element) {
-          if (element.hasAttribute('aria-hidden')) {
-            element.setAttribute('aria-hidden', state ? 'false' : 'true');
-          }
-
-          if (element.hasAttribute('aria-expanded')) {
-            element.setAttribute('aria-expanded', state ? 'true' : 'false');
-          }
-
-          if (element.getAttribute('data-x-toggle') === 'collapse-b') {
-            toggleClass(element, 'collapsed', !state);
-          } else {
-            toggleClass(element, 'x-active', state);
-          }
-
-          var icon = element.querySelector('.x-toggle');
-          toggleClass(icon, 'x-active', state);
-        });
-
-        if (window.TCOToggleStates && typeof window.TCOToggleStates.set === 'function') {
-          window.TCOToggleStates.set(id, state);
-        }
-      }
-
-      function handleEarlyOffCanvas(event) {
-        if (event.type === 'click' && Date.now() - lastPointerToggle < 600) {
-          event.preventDefault();
-          event.stopPropagation();
-          return;
-        }
-
-        var toggle = event.target.closest('[data-x-toggle][data-x-toggleable]');
-        if (!toggle || toggle.closest('.x-anchor-layered-back')) return;
-
-        var isOffCanvasToggle = toggle.hasAttribute('data-x-toggle-overlay') && toggle.getAttribute('aria-controls');
-        if (!isOffCanvasToggle) {
-          return;
-        }
-
-        var id = toggle.getAttribute('data-x-toggleable');
-        if (!id) return;
-
-        event.preventDefault();
-        event.stopPropagation();
-
-        if (event.type === 'pointerdown') {
-          lastPointerToggle = Date.now();
-        }
-
-        var isCollapsedToggle = toggle.getAttribute('data-x-toggle') === 'collapse-b';
-        var nextState = isCollapsedToggle ? toggle.classList.contains('collapsed') : !toggle.classList.contains('x-active');
-
-        setToggleState(id, nextState);
-
-        document.querySelectorAll('[data-x-toggleable="' + id + '"]').forEach(function (element) {
-          element.dispatchEvent(new CustomEvent('tco-toggle', {
-            bubbles: false,
-            detail: {
-              state: nextState,
-              id: id
-            }
-          }));
-        });
-      }
-
-      document.addEventListener('pointerdown', handleEarlyOffCanvas, true);
-      document.addEventListener('click', handleEarlyOffCanvas, true);
-    }());
-    </script>
-    <?php
-}
 
 function meditrendy_child_styles() {
     wp_enqueue_style(
@@ -113,7 +26,7 @@ function meditrendy_child_styles() {
 
     if ( file_exists( $header_css_path ) ) {
         wp_enqueue_style(
-            'meditrendy-filters',
+            'meditrendy-header',
             get_stylesheet_directory_uri() . '/styles/header.css',
             array('child-style'),
             filemtime( $header_css_path )
@@ -142,19 +55,6 @@ function meditrendy_child_styles() {
             true
         );
     }
-}
-
-function meditrendy_filter_script_tag() {
-    $filters_js_path = get_stylesheet_directory() . '/scripts/filters.js';
-
-    if ( ! file_exists( $filters_js_path ) ) {
-        return;
-    }
-
-    printf(
-        '<script id="meditrendy-filters-fallback" src="%s"></script>' . "\n",
-        esc_url( get_stylesheet_directory_uri() . '/scripts/filters.js?ver=' . filemtime( $filters_js_path ) )
-    );
 }
 
 /* =========================================
