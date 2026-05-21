@@ -55,6 +55,39 @@ function meditrendy_child_styles() {
             true
         );
     }
+
+    $cart_shipping_css_path = get_stylesheet_directory() . '/styles/cart-shipping-loading.css';
+
+    $is_cart_or_checkout = ( function_exists( 'is_cart' ) && is_cart() ) || ( function_exists( 'is_checkout' ) && is_checkout() );
+
+    if ( $is_cart_or_checkout && file_exists( $cart_shipping_css_path ) ) {
+        wp_enqueue_style(
+            'meditrendy-cart-shipping-loading',
+            get_stylesheet_directory_uri() . '/styles/cart-shipping-loading.css',
+            array( 'child-style' ),
+            filemtime( $cart_shipping_css_path )
+        );
+    }
+
+    $cart_shipping_js_path = get_stylesheet_directory() . '/scripts/cart-shipping-loading.js';
+
+    if ( $is_cart_or_checkout && file_exists( $cart_shipping_js_path ) ) {
+        wp_enqueue_script(
+            'meditrendy-cart-shipping-loading',
+            get_stylesheet_directory_uri() . '/scripts/cart-shipping-loading.js',
+            array(),
+            filemtime( $cart_shipping_js_path ),
+            true
+        );
+
+        wp_localize_script(
+            'meditrendy-cart-shipping-loading',
+            'MeditrendyCartShippingLoading',
+            array(
+                'label' => 'Atnaujinamas pristatymas...',
+            )
+        );
+    }
 }
 
 /* =========================================
