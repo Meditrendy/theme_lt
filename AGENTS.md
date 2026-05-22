@@ -17,6 +17,7 @@ This repository contains the Meditrendy child theme for the Pro theme. Treat it 
 - Keep changes focused. Avoid unrelated refactors.
 - Always consider the user experience when making changes.
 - Always consider website performance when making changes.
+- Changes that apply to products usually apply to product sets as well.
 
 ## File Layout
 
