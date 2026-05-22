@@ -1,0 +1,87 @@
+.mt-accordion {
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    color: #07111f;
+}
+
+.mt-accordion details {
+    margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.mt-accordion details > summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    margin: 0;
+    padding: 0 44px 0 0 !important;
+    color: #07111f;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0;
+    list-style: none;
+    cursor: pointer;
+}
+
+.mt-accordion details > summary::marker,
+.mt-accordion details > summary::-webkit-details-marker {
+    content: "";
+    display: none;
+}
+
+.mt-accordion details > summary::before {
+    content: none !important;
+}
+
+.mt-accordion details > summary::after {
+    content: "+" !important;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: transparent !important;
+    color: currentColor;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    transform: translateY(-50%);
+    transition: color 160ms ease;
+}
+
+.mt-accordion details[open] > summary::after {
+    content: "-" !important;
+}
+
+.mt-accordion .acc-content {
+    padding: 0 48px 22px 0;
+    color: #344054;
+    font-size: 14px;
+    line-height: 1.65;
+    letter-spacing: 0;
+}
+
+.mt-accordion .acc-content > :first-child {
+    margin-top: 0;
+}
+
+.mt-accordion .acc-content > :last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+    .mt-accordion details > summary {
+        min-height: 56px;
+        padding-right: 38px !important;
+        font-size: 14px;
+    }
+
+    .mt-accordion .acc-content {
+        padding-right: 42px;
+    }
+}

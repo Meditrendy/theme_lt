@@ -55,6 +55,17 @@ function meditrendy_child_styles() {
         );
     }
 
+    $product_css_path = get_stylesheet_directory() . '/styles/product.css';
+
+    if ( function_exists( 'is_product' ) && is_product() && file_exists( $product_css_path ) ) {
+        wp_enqueue_style(
+            'meditrendy-product',
+            get_stylesheet_directory_uri() . '/styles/product.css',
+            array('child-style'),
+            filemtime( $product_css_path )
+        );
+    }
+
     $filters_js_path = get_stylesheet_directory() . '/scripts/filters.js';
 
     if ( file_exists( $filters_js_path ) ) {
