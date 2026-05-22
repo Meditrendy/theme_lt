@@ -6,6 +6,10 @@
     }
 }
 
+/****************
+   Mobile menu
+****************/
+
 .x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split {
     position: relative;
     display: block !important;
@@ -30,7 +34,7 @@
     align-items: center;
     justify-content: center;
     width: 52px;
-    height: 30px;
+    height: 48px;
     border: 0;
     border-left: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 0;
@@ -70,4 +74,8 @@
 
 .x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split > .mt-mobile-submenu-toggle[aria-expanded="true"] span::after {
     transform: rotate(0deg);
+}
+
+.menu-item .x-anchor .x-anchor-content .x-anchor-text-primary {
+    line-height: 1.5;
 }

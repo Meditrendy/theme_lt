@@ -44,6 +44,17 @@ function meditrendy_child_styles() {
         );
     }
 
+    $categories_css_path = get_stylesheet_directory() . '/styles/categories.css';
+
+    if ( file_exists( $categories_css_path ) ) {
+        wp_enqueue_style(
+            'meditrendy-categories',
+            get_stylesheet_directory_uri() . '/styles/categories.css',
+            array('child-style'),
+            filemtime( $categories_css_path )
+        );
+    }
+
     $filters_js_path = get_stylesheet_directory() . '/scripts/filters.js';
 
     if ( file_exists( $filters_js_path ) ) {

@@ -1,0 +1,11 @@
+.x-crumbs {
+    padding-left: 5px !important;
+}
+
+.mt-subcategories {
+    margin-top: 5px;
+
+    .mt-subcategory-link {
+        border-radius: 5px;
+    }
+}
