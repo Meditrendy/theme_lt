@@ -33,17 +33,6 @@ function meditrendy_child_styles() {
         );
     }
 
-    $filters_css_path = get_stylesheet_directory() . '/styles/filters.css';
-
-    if ( file_exists( $filters_css_path ) ) {
-        wp_enqueue_style(
-            'meditrendy-filters',
-            get_stylesheet_directory_uri() . '/styles/filters.css',
-            array('child-style'),
-            filemtime( $filters_css_path )
-        );
-    }
-
     $categories_css_path = get_stylesheet_directory() . '/styles/categories.css';
 
     if ( file_exists( $categories_css_path ) ) {
@@ -74,18 +63,6 @@ function meditrendy_child_styles() {
             get_stylesheet_directory_uri() . '/styles/product.css',
             array('child-style'),
             filemtime( $product_css_path )
-        );
-    }
-
-    $filters_js_path = get_stylesheet_directory() . '/scripts/filters.js';
-
-    if ( file_exists( $filters_js_path ) ) {
-        wp_enqueue_script(
-            'meditrendy-filters-js',
-            get_stylesheet_directory_uri() . '/scripts/filters.js',
-            array(),
-            filemtime( $filters_js_path ),
-            true
         );
     }
 
