@@ -1,7 +1,20 @@
-.x-anchor {
-    .x-anchor-content {
-        overflow: visible;
-    }
+/****************
+   Header cart
+****************/
+
+.x-anchor.xoo-wsc-cart-trigger,
+.x-anchor.xoo-wsc-cart-trigger .x-anchor-content,
+.x-anchor.xoo-wsc-cart-trigger .x-graphic {
+    overflow: visible;
+}
+
+.x-anchor.xoo-wsc-cart-trigger .meditrendy-cart-count {
+    box-sizing: border-box;
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0;
+    border-radius: 50%;
 }
 
 /****************
