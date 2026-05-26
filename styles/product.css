@@ -90,7 +90,7 @@
 
 .mt-product-size-chart-content th,
 .mt-product-size-chart-content td {
-    min-width: 92px;
+    min-width: 128px;
     white-space: normal;
 }
 
@@ -99,14 +99,16 @@
     position: sticky;
     left: 0;
     z-index: 2;
-    min-width: 154px;
-    max-width: 154px;
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
     background: #ffffff;
     box-shadow:
         inset 0 -1px 0 #d7dde4,
         inset -1px 0 0 #d7dde4,
         10px 0 14px -14px rgba(7, 17, 31, 0.55);
-    white-space: nowrap;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .mt-product-size-chart-content th:first-child {
@@ -148,6 +150,7 @@
 
     .mt-product-size-chart-content th:first-child,
     .mt-product-size-chart-content td:first-child {
+        width: 154px;
         min-width: 154px;
         max-width: 154px;
         white-space: normal;
