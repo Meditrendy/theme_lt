@@ -44,6 +44,17 @@ function meditrendy_child_styles() {
         );
     }
 
+    $blog_css_path = get_stylesheet_directory() . '/styles/blog.css';
+
+    if ( file_exists( $blog_css_path ) && meditrendy_should_enqueue_blog_styles() ) {
+        wp_enqueue_style(
+            'meditrendy-blog',
+            get_stylesheet_directory_uri() . '/styles/blog.css',
+            array('child-style'),
+            filemtime( $blog_css_path )
+        );
+    }
+
     $homepage_css_path = get_stylesheet_directory() . '/styles/homepage.css';
 
     if ( is_front_page() && file_exists( $homepage_css_path ) ) {
@@ -98,6 +109,23 @@ function meditrendy_child_styles() {
             )
         );
     }
+}
+
+function meditrendy_should_enqueue_blog_styles() {
+    if ( is_front_page() || is_home() || is_category() || is_tag() || is_date() || is_author() || is_singular( 'post' ) || is_page_template( 'template-blog-archive.php' ) ) {
+        return true;
+    }
+
+    if ( ! is_singular() ) {
+        return false;
+    }
+
+    $post = get_post();
+
+    return $post && (
+        has_shortcode( $post->post_content, 'meditrendy_blog_archive' ) ||
+        has_shortcode( $post->post_content, 'meditrendy_blog_home' )
+    );
 }
 
 /* =========================================
