@@ -1,0 +1,57 @@
+/* Brand products */
+
+.mt-brand-products .x-row-inner {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.mt-brand-products .product-loop {
+    width: 100%;
+    min-width: 0;
+}
+
+.mt-brand-products .product-cart {
+    margin-bottom: 14px;
+}
+
+.mt-brand-products .product-cart .x-image,
+.mt-brand-products .product-cart img {
+    display: block;
+    width: 100%;
+}
+
+.mt-brand-products .product-cart img {
+    height: auto;
+}
+
+.mt-brand-products .product-loop > .x-text {
+    margin: 0;
+    padding: 0;
+}
+
+.mt-brand-products h3.x-text-content-text-primary {
+    margin: 0 0 6px;
+    color: #000000 !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.35 !important;
+}
+
+.mt-brand-products .product-loop > .x-text + .x-text .x-text-content-text-primary {
+    display: block;
+    color: #000000 !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.35 !important;
+}
+
+@media (max-width: 767px) {
+    .mt-brand-products .x-row-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 4px;
+    }
+}
