@@ -122,3 +122,84 @@
 .mt-subcategories-nested {
     margin: 10px 0 0 16px;
 }
+
+/*******************************************
+                Pagination 
+********************************************/
+
+.woocommerce-pagination,
+.x-paginate {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100%;
+    min-height: 32px !important;
+    margin: 30px 0 0;
+    background: transparent !important;
+    overflow-x: auto;
+    overflow-y: visible !important;
+    scrollbar-width: none;
+}
+
+.woocommerce-pagination::-webkit-scrollbar,
+.x-paginate::-webkit-scrollbar {
+    display: none;
+}
+
+.woocommerce-pagination ul.page-numbers,
+.x-paginate .x-paginate-inner {
+    display: flex !important;
+    align-items: center;
+    justify-content: center !important;
+    gap: clamp(8px, 2vw, 12px) !important;
+    flex: 0 0 auto !important;
+    flex-wrap: nowrap !important;
+    width: auto !important;
+    max-width: 100%;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    list-style: none;
+}
+
+.woocommerce-pagination li {
+    margin: 0 !important;
+    padding: 0;
+    background: transparent !important;
+}
+
+.woocommerce-pagination .page-numbers,
+.x-paginate .page-numbers {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: #f1f1f1 !important;
+    color: #111111 !important;
+    box-shadow: none !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+}
+
+.woocommerce-pagination .page-numbers.current,
+.x-paginate .page-numbers.current {
+    background: #c7c7c7 !important;
+    color: #111111 !important;
+}
+
+.woocommerce-pagination a.page-numbers:hover,
+.woocommerce-pagination a.page-numbers:focus,
+.x-paginate a.page-numbers:hover,
+.x-paginate a.page-numbers:focus {
+    background: #d9d9d9 !important;
+    color: #111111 !important;
+}
