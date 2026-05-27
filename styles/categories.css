@@ -6,6 +6,10 @@
     padding-left: 5px !important;
 }
 
+/*******************************************
+      Categories navigation and listing 
+********************************************/
+
 .mt-subcategories {
     display: flex;
     align-items: center;
