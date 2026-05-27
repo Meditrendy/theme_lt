@@ -1,4 +1,171 @@
 /************************
+ Product gallery lightbox
+ ************************/
+.medviewer,
+.medviewer.open {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 24px;
+    background: #f5f6f8 !important;
+    cursor: zoom-out;
+    overflow: hidden;
+}
+
+.medviewer {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+.medviewer.open {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.medviewer img {
+    display: block;
+    width: auto;
+    max-width: min(100%, 1320px);
+    height: auto;
+    max-height: calc(100vh - 48px);
+    object-fit: contain;
+    box-shadow: 0 18px 48px rgba(7, 17, 31, 0.12);
+}
+
+.pswp__bg {
+    background: #f5f6f8 !important;
+    opacity: 1 !important;
+}
+
+.pswp__top-bar,
+.pswp__caption {
+    background: rgba(245, 246, 248, 0.92) !important;
+}
+
+.pswp__counter {
+    color: #07111f !important;
+}
+
+.pswp__button {
+    filter: invert(1) grayscale(1) contrast(1.4);
+    opacity: 0.9 !important;
+}
+
+.pswp__button:hover,
+.pswp__button:focus-visible {
+    opacity: 1 !important;
+}
+
+/************************
+ Product gallery navigation
+ ************************/
+.woocommerce-product-gallery .flex-direction-nav {
+    display: none !important;
+}
+
+@media (min-width: 768px) {
+    .woocommerce-product-gallery {
+        position: relative;
+    }
+
+    .woocommerce-product-gallery .flex-viewport {
+        position: relative;
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        left: 0;
+        z-index: 20;
+        display: block !important;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        pointer-events: none;
+        transform: translateY(-50%);
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav a {
+        position: absolute;
+        top: 50%;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.94) !important;
+        box-shadow: 0 8px 22px rgba(7, 17, 31, 0.16);
+        color: #07111f !important;
+        font-size: 0;
+        line-height: 1;
+        opacity: 1 !important;
+        overflow: hidden;
+        pointer-events: auto;
+        text-decoration: none;
+        transform: translateY(-50%);
+        transition: background 160ms ease, box-shadow 160ms ease, color 160ms ease;
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav a:hover,
+    .woocommerce-product-gallery .flex-direction-nav a:focus-visible {
+        background: #ffffff !important;
+        box-shadow: 0 10px 26px rgba(7, 17, 31, 0.22);
+        color: #004f91 !important;
+        outline: none;
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav a::before {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid currentColor;
+        border-right: 2px solid currentColor;
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav .flex-prev {
+        right: auto !important;
+        left: 16px !important;
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav .flex-prev::before {
+        transform: translateX(2px) rotate(-135deg);
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav .flex-next {
+        right: 16px !important;
+        left: auto !important;
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav .flex-next::before {
+        transform: translateX(-2px) rotate(45deg);
+    }
+
+    .woocommerce-product-gallery .flex-direction-nav .flex-prev::before,
+    .woocommerce-product-gallery .flex-direction-nav .flex-next::before {
+        color: #07111f;
+    }
+}
+
+/************************
  Accordion
  ************************/
 .mt-accordion {
