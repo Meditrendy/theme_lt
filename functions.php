@@ -57,7 +57,7 @@ function meditrendy_child_styles() {
 
     $homepage_css_path = get_stylesheet_directory() . '/styles/homepage.css';
 
-    if ( is_front_page() && file_exists( $homepage_css_path ) ) {
+    if ( ( is_front_page() || is_page_template( 'template-cornerstone-canvas.php' ) ) && file_exists( $homepage_css_path ) ) {
         wp_enqueue_style(
             'meditrendy-homepage',
             get_stylesheet_directory_uri() . '/styles/homepage.css',
