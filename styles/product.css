@@ -42,6 +42,151 @@
 }
 
 /************************
+ Complete the set
+ ************************/
+.mt-complete-set {
+    width: 100%;
+    margin: 26px 0 0;
+    padding: 22px 0 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    color: #07111f;
+}
+
+.mt-complete-set-title {
+    margin: 0 0 18px;
+    color: #07111f;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0;
+}
+
+.mt-complete-set-product {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 18px;
+}
+
+.mt-complete-set-media {
+    display: block;
+    background: #f5f6f8;
+}
+
+.mt-complete-set-image {
+    display: block;
+    width: 84px;
+    height: 112px;
+    object-fit: cover;
+}
+
+.mt-complete-set-name {
+    display: inline-block;
+    color: #07111f;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+.mt-complete-set-name:hover,
+.mt-complete-set-name:focus-visible {
+    color: #004f91;
+    outline: none;
+}
+
+.mt-complete-set-color {
+    margin-top: 6px;
+    color: #344054;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.mt-complete-set-form .variations {
+    width: 100%;
+    margin: 0 0 12px;
+    border: 0;
+}
+
+.mt-complete-set-form .variations tbody {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.mt-complete-set-form .variations tr,
+.mt-complete-set-form .variations th,
+.mt-complete-set-form .variations td {
+    display: block;
+    padding: 0;
+    border: 0;
+}
+
+.mt-complete-set-form .variations .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.mt-complete-set-form .variations select {
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid #07111f;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #07111f;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.mt-complete-set-form .reset_variations,
+.mt-complete-set-form .woocommerce-variation-description,
+.mt-complete-set-form .woocommerce-variation-price,
+.mt-complete-set-form .woocommerce-variation-availability {
+    display: none !important;
+}
+
+.mt-complete-set-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid #07111f !important;
+    border-radius: 4px !important;
+    background: #ffffff !important;
+    color: #07111f !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.mt-complete-set-button:hover,
+.mt-complete-set-button:focus-visible {
+    background: #07111f !important;
+    color: #ffffff !important;
+    outline: none;
+}
+
+.mt-complete-set-button-price::after {
+    content: "\00b7";
+    margin-left: 8px;
+}
+
+@media (max-width: 479px) {
+    .mt-complete-set-form .variations tbody {
+        grid-template-columns: 1fr;
+    }
+}
+
+/************************
  Product gallery lightbox
  ************************/
 .medviewer,
