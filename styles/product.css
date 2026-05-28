@@ -1,4 +1,47 @@
 /************************
+ Related product color swatches
+ ************************/
+.single-product .products .mt-color-swatches {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.single-product .products .mt-swatch-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    min-width: 28px;
+    padding: 0 10px;
+    border: 1px solid #d8dce2;
+    border-radius: 999px;
+    background: #f5f6f8;
+    color: #07111f;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.single-product .products .mt-swatch-more:hover,
+.single-product .products .mt-swatch-more:focus-visible {
+    border-color: #07111f;
+    background: #ffffff;
+    color: #07111f;
+    outline: none;
+}
+
+/************************
+ Product description
+ ************************/
+.single-product .x-wc-add-to-cart-form + .x-text-headline + .x-text.x-content,
+.single-product .x-wc-add-to-cart-form + .x-text-headline + .x-text.x-content p {
+    font-size: 1.2rem !important;
+}
+
+/************************
  Product gallery lightbox
  ************************/
 .medviewer,
@@ -231,7 +274,7 @@
 .mt-accordion .acc-content {
     padding: 0 48px 22px 0;
     color: #344054;
-    font-size: 14px;
+    font-size: 1.2rem !important;
     line-height: 1.65;
     letter-spacing: 0;
 }
