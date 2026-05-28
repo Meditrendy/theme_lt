@@ -1,0 +1,4 @@
+/* Checkout address fields */
+.wc-block-checkout .wc-block-components-address-form__company + .wc-block-components-country-input {
+    margin-top: 16px;
+}

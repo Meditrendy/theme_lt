@@ -90,6 +90,17 @@ function meditrendy_child_styles() {
         );
     }
 
+    $checkout_css_path = get_stylesheet_directory() . '/styles/checkout.css';
+
+    if ( function_exists( 'is_checkout' ) && is_checkout() && file_exists( $checkout_css_path ) ) {
+        wp_enqueue_style(
+            'meditrendy-checkout',
+            get_stylesheet_directory_uri() . '/styles/checkout.css',
+            array( 'child-style' ),
+            filemtime( $checkout_css_path )
+        );
+    }
+
     $cart_shipping_js_path = get_stylesheet_directory() . '/scripts/cart-shipping-loading.js';
 
     if ( $is_cart_or_checkout && file_exists( $cart_shipping_js_path ) ) {
