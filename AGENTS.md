@@ -7,6 +7,8 @@ This repository contains the Meditrendy child theme for the Pro theme. Treat it 
 - Put visual, layout, header, mobile navigation, cart/checkout presentation, and theme integration changes here.
 - Do not put reusable WooCommerce business logic here when it can live in `meditrendy-core`.
 - Do not edit the Pro parent theme, WordPress core, WooCommerce core, or third-party plugin files unless the user explicitly asks.
+- If a requested change can be made cleanly in Cornerstone, Pro, WordPress admin, WooCommerce settings, or another editor UI, prefer giving the user exact editor instructions instead of changing code.
+- Use code for editor-controlled areas only when the editor cannot reasonably express the behavior, the change must be reusable/systematic, or the user explicitly asks for a code-level implementation.
 
 ## Project Conventions
 
@@ -14,6 +16,7 @@ This repository contains the Meditrendy child theme for the Pro theme. Treat it 
 - Admin/editor-facing labels may be English or Polish.
 - Prefer stable custom classes and existing theme modules over styling generated Cornerstone classes such as `m1q-*` or `e246-*`.
 - Cornerstone/Pro generated markup can change; avoid depending on brittle generated class names when a custom wrapper or selector is possible.
+- Before editing code that targets Cornerstone-generated markup, check whether the same result can be achieved by adding a class, changing element settings, or editing content in Cornerstone.
 - Keep changes focused. Avoid unrelated refactors.
 - Always consider the user experience when making changes.
 - Always consider website performance when making changes.
