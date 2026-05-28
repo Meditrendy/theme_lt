@@ -7,6 +7,18 @@
 }
 
 /*******************************************
+      Mobile product archive spacing
+********************************************/
+
+@media (max-width: 767px) {
+    body.post-type-archive-product .x-layout > .x-section,
+    body.tax-product_cat .x-layout > .x-section,
+    body.tax-product_tag .x-layout > .x-section {
+        padding-right: 5px !important;
+    }
+}
+
+/*******************************************
       Categories navigation and listing 
 ********************************************/
 
