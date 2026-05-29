@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 require_once get_stylesheet_directory() . '/modules/mobile-menu.php';
@@ -185,7 +185,7 @@ function meditrendy_should_enqueue_blog_styles() {
 }
 
 /* =========================================
-    przyciski iloĹ›ci produktu w single cart
+    product quantity 
    ========================================= */
 
 add_action('wp_footer', function() {
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const minus = document.createElement('button');
       minus.type = 'button';
       minus.className = 'qty-btn minus';
-      minus.textContent = 'â’';
+      minus.textContent = '\u2212';
 
       const plus = document.createElement('button');
       plus.type = 'button';
@@ -240,7 +240,6 @@ function mt_preset_accordion() {
 
     if (!$preset_id) return '';
 
-    // Pobranie caĹ‚ych obiektĂłw pĂłl
     $fabric_field   = get_field_object('fabric', $preset_id);
     $details_field  = get_field_object('details_fit', $preset_id);
     $delivery_field = get_field_object('delivery_info', $preset_id);

@@ -21,7 +21,7 @@ This repository contains the Meditrendy child theme for the Pro theme. Treat it 
 - Always consider the user experience when making changes.
 - Always consider website performance when making changes.
 - Changes that apply to products usually apply to product sets as well.
-- Add block comments to the CSS code to indicate what part is being styled.
+- Add block comments in english to the CSS code to indicate what part is being styled.
 - Do not introduce English or Polish frontend strings unless the user explicitly approves them.
 - For user-facing strings, use Lithuanian wording and keep it consistent with WooCommerce context.
 - Always prepare for translations in the future.
