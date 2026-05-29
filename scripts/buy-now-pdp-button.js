@@ -1,10 +1,4 @@
- jQuery(function ($) {
-
-    const form = $('form.variations_form');
-
-    if (!form.length) {
-        return;
-    }
+jQuery(function ($) {
 
     const buttonSelectors = [
         '.single_add_to_cart_button',
@@ -12,6 +6,13 @@
         '.buy_now_button',
         '.wc-buy-now-button'
     ];
+
+    const label =
+        window.MeditrendyBuyNowPdpButton &&
+        window.MeditrendyBuyNowPdpButton.labels &&
+        window.MeditrendyBuyNowPdpButton.labels.selectSize
+            ? window.MeditrendyBuyNowPdpButton.labels.selectSize
+            : 'Pasirinkite dydį prieš įdėdami prekę į krepšelį.';
 
     function getButtons() {
         return $(buttonSelectors.join(','));
@@ -26,21 +27,21 @@
         });
     }
 
-    function hasSelectedVariation() {
-        const variationId = form.find('input[name="variation_id"]').val();
-
-        return variationId && variationId !== '0';
-    }
-
     function showTooltip(button) {
         let tooltip = $('.mt-size-tooltip');
 
         if (!tooltip.length) {
-            tooltip = $('<div class="mt-size-tooltip">Pasirinkite dydį prieš įdėdami prekę į krepšelį.</div>');
+            tooltip = $('<div class="mt-size-tooltip"></div>');
             $('body').append(tooltip);
         }
 
+        tooltip.text(label);
+
         const offset = button.offset();
+
+        if (!offset) {
+            return;
+        }
 
         tooltip.css({
             top: offset.top + button.outerHeight() + 10,
@@ -56,28 +57,148 @@
         }, 3000);
     }
 
-    function focusFirstVariationField() {
-        const firstSelect = form.find('select').first();
+    function getMainProductVariationForm(button) {
+        const cartForm = button.closest('form.cart');
 
-        if (firstSelect.length) {
-            firstSelect.trigger('focus');
+        if (cartForm.hasClass('variations_form')) {
+            return cartForm;
         }
+
+        const previousVariationForm = cartForm.prevAll('form.variations_form').first();
+
+        if (previousVariationForm.length) {
+            return previousVariationForm;
+        }
+
+        return $('form.variations_form:not(.woosb_variations_form)').first();
+    }
+
+    function isNormalVariableProductReady(button) {
+        const form = getMainProductVariationForm(button);
+
+        if (!form.length) {
+            return true;
+        }
+
+        const variationId = form.find('input[name="variation_id"]').val();
+
+        return !!variationId && variationId !== '0';
+    }
+
+    function getSmartBundleWrap(button) {
+        const cartForm = button.closest('form.cart');
+
+        let wrap = cartForm.prevAll('.woosb-wrap').first();
+
+        if (!wrap.length) {
+            wrap = $('.woosb-wrap.woosb-bundled').first();
+        }
+
+        return wrap;
+    }
+
+    function isSmartBundleProduct(button) {
+        const cartForm = button.closest('form.cart');
+
+        return cartForm.find('input[name="woosb_ids"]').length > 0 || getSmartBundleWrap(button).length > 0;
+    }
+
+    function isSmartBundleReady(button) {
+        const wrap = getSmartBundleWrap(button);
+
+        if (!wrap.length) {
+            return true;
+        }
+
+        let isReady = true;
+
+        wrap.find('form.variations_form.woosb_variations_form').each(function () {
+            const variationForm = $(this);
+
+            variationForm.find('select[name^="attribute_"]').each(function () {
+                const select = $(this);
+
+                if (!select.val()) {
+                    isReady = false;
+                    return false;
+                }
+            });
+
+            if (!isReady) {
+                return false;
+            }
+        });
+
+        return isReady;
+    }
+
+    function focusFirstMissingSmartBundleField(button) {
+        const wrap = getSmartBundleWrap(button);
+
+        if (!wrap.length) {
+            return;
+        }
+
+        const emptySelect = wrap.find('select[name^="attribute_"]').filter(function () {
+            return !$(this).val();
+        }).first();
+
+        if (emptySelect.length) {
+            const variation = emptySelect.closest('.variation');
+
+            if (variation.length) {
+                $('html, body').animate({
+                    scrollTop: variation.offset().top - 120
+                }, 200);
+            }
+
+            emptySelect.trigger('focus');
+        }
+    }
+
+    function focusFirstMissingNormalVariationField(button) {
+        const form = getMainProductVariationForm(button);
+
+        if (!form.length) {
+            return;
+        }
+
+        const emptySelect = form.find('select[name^="attribute_"]').filter(function () {
+            return !$(this).val();
+        }).first();
+
+        if (emptySelect.length) {
+            emptySelect.trigger('focus');
+        }
+    }
+
+    function isProductReady(button) {
+        if (isSmartBundleProduct(button)) {
+            return isSmartBundleReady(button);
+        }
+
+        return isNormalVariableProductReady(button);
+    }
+
+    function focusFirstMissingField(button) {
+        if (isSmartBundleProduct(button)) {
+            focusFirstMissingSmartBundleField(button);
+            return;
+        }
+
+        focusFirstMissingNormalVariationField(button);
     }
 
     keepButtonsActive();
 
-    /**
-     * Important:
-     * WooCommerce may re-disable the button after variation events.
-     */
-    form.on('woocommerce_variation_has_changed found_variation reset_data hide_variation check_variations', function () {
-        setTimeout(keepButtonsActive, 10);
-        setTimeout(keepButtonsActive, 100);
-    });
+    $(document).on(
+        'woocommerce_variation_has_changed found_variation reset_data hide_variation check_variations woosb_calc_price woosb_init woosb_update',
+        function () {
+            setTimeout(keepButtonsActive, 10);
+            setTimeout(keepButtonsActive, 100);
+        }
+    );
 
-    /**
-     * MutationObserver watches if WooCommerce/theme adds disabled again.
-     */
     const observer = new MutationObserver(function () {
         keepButtonsActive();
     });
@@ -89,13 +210,10 @@
         });
     });
 
-    /**
-     * Block click when size is not selected.
-     */
     $(document).on('click', buttonSelectors.join(','), function (event) {
         const button = $(this);
 
-        if (hasSelectedVariation()) {
+        if (isProductReady(button)) {
             return true;
         }
 
@@ -104,35 +222,32 @@
 
         keepButtonsActive();
         showTooltip(button);
-        focusFirstVariationField();
+        focusFirstMissingField(button);
 
         return false;
     });
 
-    /**
-     * Extra safety: block form submit too.
-     */
-    form.on('submit', function (event) {
-        if (hasSelectedVariation()) {
+    $(document).on('submit', 'form.cart, form.variations_form', function (event) {
+        const form = $(this);
+        const button = form.find('.single_add_to_cart_button').first();
+
+        if (!button.length) {
+            return true;
+        }
+
+        if (isProductReady(button)) {
             return true;
         }
 
         event.preventDefault();
         event.stopImmediatePropagation();
 
-        const button = form.find('.single_add_to_cart_button').first();
-
-        if (button.length) {
-            showTooltip(button);
-        }
-
-        focusFirstVariationField();
+        keepButtonsActive();
+        showTooltip(button);
+        focusFirstMissingField(button);
 
         return false;
     });
 
-    /**
-     * Last safety net because some themes/plugins re-render PDP controls.
-     */
     setInterval(keepButtonsActive, 500);
 });
