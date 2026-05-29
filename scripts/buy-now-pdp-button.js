@@ -23,7 +23,12 @@ jQuery(function ($) {
             $(this)
                 .prop('disabled', false)
                 .removeAttr('disabled')
-                .removeClass('disabled');
+                .removeAttr('aria-disabled')
+                .removeClass('disabled woosb-disabled');
+        });
+
+        $('.woosb-wrap, .woosb-products, form.cart').each(function () {
+            $(this).removeClass('disabled woosb-disabled');
         });
     }
 
