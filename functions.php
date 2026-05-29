@@ -33,6 +33,18 @@ function meditrendy_child_styles() {
         );
     }
 
+    $desktop_menu_js_path = get_stylesheet_directory() . '/scripts/desktop-menu.js';
+
+    if ( file_exists( $desktop_menu_js_path ) ) {
+        wp_enqueue_script(
+            'meditrendy-desktop-menu',
+            get_stylesheet_directory_uri() . '/scripts/desktop-menu.js',
+            array(),
+            filemtime( $desktop_menu_js_path ),
+            true
+        );
+    }
+
     $categories_css_path = get_stylesheet_directory() . '/styles/categories.css';
 
     if ( file_exists( $categories_css_path ) ) {

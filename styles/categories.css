@@ -16,6 +16,13 @@
     body.tax-product_tag .x-layout > .x-section {
         padding-right: 5px !important;
     }
+
+    body.post-type-archive-product #products-wrapper .product-loop,
+    body.tax-product_cat #products-wrapper .product-loop,
+    body.tax-product_tag #products-wrapper .product-loop {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
 }
 
 /*******************************************
