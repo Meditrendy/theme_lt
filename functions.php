@@ -100,6 +100,28 @@ function meditrendy_child_styles() {
         );
     }
 
+    $buy_now_js_path = get_stylesheet_directory() . '/scripts/buy-now-pdp-button.js';
+
+    if ( function_exists( 'is_product' ) && is_product() && file_exists( $buy_now_js_path ) ) {
+        wp_enqueue_script(
+            'meditrendy-buy-now-pdp-button',
+            get_stylesheet_directory_uri() . '/scripts/buy-now-pdp-button.js',
+            array( 'jquery' ),
+            filemtime( $buy_now_js_path ),
+            true
+        );
+
+        wp_localize_script(
+            'meditrendy-buy-now-pdp-button',
+            'MeditrendyBuyNowPdpButton',
+            array(
+                'labels' => array(
+                    'selectSize' => 'Pasirinkite dydį prieš įdėdami prekę į krepšelį.',
+                ),
+            )
+        );
+    }
+
     $cart_shipping_css_path = get_stylesheet_directory() . '/styles/cart-shipping-loading.css';
 
     $is_cart_or_checkout = ( function_exists( 'is_cart' ) && is_cart() ) || ( function_exists( 'is_checkout' ) && is_checkout() );
