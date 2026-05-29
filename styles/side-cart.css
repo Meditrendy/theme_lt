@@ -140,12 +140,12 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     display: block;
 }
 
+/* Side cart product thumbnails */
 .mt-side-cart-item-image {
     width: 100px;
     aspect-ratio: 1 / 1;
     height: auto;
-    object-fit: cover;
-    background: #f3f3f3;
+    object-fit: contain;
 }
 
 .mt-side-cart-item-body {
@@ -305,7 +305,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     justify-content: center;
     min-height: 50px;
     border-radius: 3px;
-    background: #262626;
+    background: #0f5ea8;
     color: #ffffff;
     font-size: 13px;
     font-weight: 800;
