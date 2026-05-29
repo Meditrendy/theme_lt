@@ -92,13 +92,13 @@
     color: #08437f;
 }
 
-.menu-item .x-anchor .x-anchor-sub-indicator {
-    color: #08437f !important;
-}
-
 /****************
    Desktop menu
 ****************/
+
+.menu-item .x-anchor .x-anchor-sub-indicator {
+    color: #08437f !important;
+}
 
 @media (min-width: 980px) {
     .x-bar .x-menu-inline > .menu-item-has-children {
