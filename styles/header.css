@@ -286,3 +286,12 @@
         grid-row: 1;
     }
 }
+
+
+/****************
+Desktop cart badge
+****************/
+
+.meditrendy-cart-count {
+    width: 16px;
+}
