@@ -116,7 +116,7 @@ function meditrendy_child_styles() {
             'MeditrendyBuyNowPdpButton',
             array(
                 'labels' => array(
-                    'selectSize' => 'Pasirinkite dydį prieš įdėdami prekę į krepšelį.',
+                    'selectSize' => 'Pasirinkite dydį',
                 ),
             )
         );

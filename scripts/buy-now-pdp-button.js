@@ -1,7 +1,10 @@
-jQuery(function ($) {
+(function ($) {
 
     const buttonSelectors = [
         '.single_add_to_cart_button',
+        'button[name="add-to-cart"]',
+        'input[name="add-to-cart"][type="submit"]',
+        '.product_type_woosb.add_to_cart_button',
         '.buy-now-button',
         '.buy_now_button',
         '.wc-buy-now-button'
@@ -12,7 +15,7 @@ jQuery(function ($) {
         window.MeditrendyBuyNowPdpButton.labels &&
         window.MeditrendyBuyNowPdpButton.labels.selectSize
             ? window.MeditrendyBuyNowPdpButton.labels.selectSize
-            : 'Pasirinkite dydį prieš įdėdami prekę į krepšelį.';
+            : 'Pasirinkite dyd\u012f';
 
     function getButtons() {
         return $(buttonSelectors.join(','));
@@ -96,6 +99,14 @@ jQuery(function ($) {
         let wrap = cartForm.prevAll('.woosb-wrap').first();
 
         if (!wrap.length) {
+            wrap = cartForm.siblings('.woosb-wrap').first();
+        }
+
+        if (!wrap.length) {
+            wrap = cartForm.closest('.product, .summary, .entry-summary').find('.woosb-wrap').first();
+        }
+
+        if (!wrap.length) {
             wrap = $('.woosb-wrap.woosb-bundled').first();
         }
 
@@ -105,17 +116,23 @@ jQuery(function ($) {
     function isSmartBundleProduct(button) {
         const cartForm = button.closest('form.cart');
 
-        return cartForm.find('input[name="woosb_ids"]').length > 0 || getSmartBundleWrap(button).length > 0;
+        return cartForm.find('input[name="woosb_ids"], input[name^="woosb_"]').length > 0 || getSmartBundleWrap(button).length > 0;
     }
 
     function isSmartBundleReady(button) {
+        const cartForm = button.closest('form.cart');
         const wrap = getSmartBundleWrap(button);
 
-        if (!wrap.length) {
+        if (!wrap.length && !cartForm.find('input[name="woosb_ids"]').length) {
             return true;
         }
 
         let isReady = true;
+        const bundleIds = cartForm.find('input[name="woosb_ids"]').val();
+
+        if (typeof bundleIds === 'string' && !bundleIds.trim()) {
+            return false;
+        }
 
         wrap.find('form.variations_form.woosb_variations_form').each(function () {
             const variationForm = $(this);
@@ -130,6 +147,24 @@ jQuery(function ($) {
             });
 
             if (!isReady) {
+                return false;
+            }
+        });
+
+        wrap.find('select[name^="attribute_"]').each(function () {
+            const select = $(this);
+
+            if (!select.val()) {
+                isReady = false;
+                return false;
+            }
+        });
+
+        wrap.find('input[name="variation_id"]').each(function () {
+            const variationId = $(this).val();
+
+            if (!variationId || variationId === '0') {
+                isReady = false;
                 return false;
             }
         });
@@ -194,8 +229,6 @@ jQuery(function ($) {
         focusFirstMissingNormalVariationField(button);
     }
 
-    keepButtonsActive();
-
     $(document).on(
         'woocommerce_variation_has_changed found_variation reset_data hide_variation check_variations woosb_calc_price woosb_init woosb_update',
         function () {
@@ -203,17 +236,6 @@ jQuery(function ($) {
             setTimeout(keepButtonsActive, 100);
         }
     );
-
-    const observer = new MutationObserver(function () {
-        keepButtonsActive();
-    });
-
-    getButtons().each(function () {
-        observer.observe(this, {
-            attributes: true,
-            attributeFilter: ['disabled', 'class']
-        });
-    });
 
     $(document).on('click', buttonSelectors.join(','), function (event) {
         const button = $(this);
@@ -231,6 +253,37 @@ jQuery(function ($) {
 
         return false;
     });
+
+    function nativeButtonFromTarget(target) {
+        if (!target || !target.closest) {
+            return $();
+        }
+
+        return $(target.closest(buttonSelectors.join(',')));
+    }
+
+    function blockInvalidAddToCart(event, button) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (typeof event.stopImmediatePropagation === 'function') {
+            event.stopImmediatePropagation();
+        }
+
+        keepButtonsActive();
+        showTooltip(button);
+        focusFirstMissingField(button);
+    }
+
+    window.addEventListener('click', function (event) {
+        const button = nativeButtonFromTarget(event.target);
+
+        if (!button.length || isProductReady(button)) {
+            return;
+        }
+
+        blockInvalidAddToCart(event, button);
+    }, true);
 
     $(document).on('submit', 'form.cart, form.variations_form', function (event) {
         const form = $(this);
@@ -254,5 +307,31 @@ jQuery(function ($) {
         return false;
     });
 
-    setInterval(keepButtonsActive, 500);
-});
+    window.addEventListener('submit', function (event) {
+        const form = $(event.target);
+        const button = form.find('.single_add_to_cart_button').first();
+
+        if (!button.length || isProductReady(button)) {
+            return;
+        }
+
+        blockInvalidAddToCart(event, button);
+    }, true);
+
+    $(function () {
+        keepButtonsActive();
+
+        const observer = new MutationObserver(function () {
+            keepButtonsActive();
+        });
+
+        getButtons().each(function () {
+            observer.observe(this, {
+                attributes: true,
+                attributeFilter: ['disabled', 'class']
+            });
+        });
+
+        setInterval(keepButtonsActive, 500);
+    });
+})(jQuery);
