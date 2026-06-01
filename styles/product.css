@@ -52,12 +52,18 @@
     color: #07111f;
 }
 
+.mt-accordion + .mt-complete-set {
+    margin-top: 0;
+    padding-top: 24px;
+    border-top: 0;
+}
+
 .mt-complete-set-title {
-    margin: 0 0 18px;
+    margin: 0 0 16px;
     color: #07111f;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 700;
-    line-height: 1.35;
+    line-height: 1.2;
     letter-spacing: 0;
 }
 
@@ -84,9 +90,10 @@
 .mt-complete-set-name {
     display: inline-block;
     color: #07111f;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.35;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.125;
     text-decoration: none;
 }
 
@@ -103,6 +110,11 @@
     line-height: 1.4;
 }
 
+.mt-complete-set-color span {
+    color: #07111f;
+    font-weight: 700;
+}
+
 .mt-complete-set-form .variations {
     width: 100%;
     margin: 0 0 12px;
@@ -110,9 +122,7 @@
 }
 
 .mt-complete-set-form .variations tbody {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    display: block;
 }
 
 .mt-complete-set-form .variations tr,
@@ -123,13 +133,23 @@
     border: 0;
 }
 
+.mt-complete-set-form .variations tr {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+}
+
+.mt-complete-set-form .variations tr + tr {
+    margin-top: 10px;
+}
+
 .mt-complete-set-form .variations .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
+    color: #07111f;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
 }
 
 .mt-complete-set-form .variations select {
@@ -181,8 +201,8 @@
 }
 
 @media (max-width: 479px) {
-    .mt-complete-set-form .variations tbody {
-        grid-template-columns: 1fr;
+    .mt-complete-set-form .variations tr {
+        grid-template-columns: 44px minmax(0, 1fr);
     }
 }
 
@@ -365,13 +385,14 @@
 .mt-accordion details {
     margin: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 10px 0 !important;
 }
 
 .mt-accordion details > summary {
     position: relative;
     display: flex;
     align-items: center;
-    min-height: 60px;
+    min-height: 50px;
     margin: 0;
     padding: 0 44px 0 0 !important;
     color: #07111f;
@@ -417,7 +438,7 @@
 }
 
 .mt-accordion .acc-content {
-    padding: 0 48px 22px 0;
+    padding: 0 48px 16px 0;
     color: #344054;
     font-size: 1.2rem !important;
     line-height: 1.65;
@@ -489,13 +510,13 @@
 
 @media (max-width: 767px) {
     .mt-accordion details > summary {
-        min-height: 56px;
+        min-height: 48px;
         padding-right: 38px !important;
         font-size: 14px;
     }
 
     .mt-accordion .acc-content {
-        padding-right: 42px;
+        padding: 0 42px 14px 0;
     }
 
     .mt-product-size-chart-content th,
