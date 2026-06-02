@@ -120,6 +120,8 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
 }
 
 .mt-side-cart-content {
+    display: flex;
+    flex-direction: column;
     min-height: 0;
     overflow-y: auto;
 }
@@ -127,6 +129,255 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
 .mt-side-cart-items {
     display: grid;
     gap: 24px;
+}
+
+/* Side cart upsell carousel */
+.mt-side-cart-upsells {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    margin-top: auto;
+    padding-top: 18px;
+    background: #ffffff;
+}
+
+.mt-side-cart-upsells-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.mt-side-cart-upsells-header h2 {
+    margin: 0;
+    color: #111111;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.mt-side-cart-upsells-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.mt-side-cart-upsells-controls button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #111111;
+    border-radius: 3px;
+    padding: 0;
+    background: #ffffff;
+    color: #111111;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.mt-side-cart-upsells-track {
+    display: grid;
+    grid-auto-columns: minmax(132px, 36%);
+    grid-auto-rows: 1fr;
+    grid-auto-flow: column;
+    gap: 12px;
+    align-items: stretch;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+}
+
+.mt-side-cart-upsells-track::-webkit-scrollbar {
+    display: none;
+}
+
+.mt-side-cart-upsell {
+    scroll-snap-align: start;
+    align-self: stretch;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    min-height: 290px;
+    min-width: 0;
+    border: 1px solid #e4e7ec;
+    border-radius: 4px;
+    background: #f5f6f8;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.mt-side-cart-upsell-image {
+    display: block;
+    aspect-ratio: 1 / 1;
+    background: #ffffff;
+}
+
+.mt-side-cart-upsell-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.mt-side-cart-upsell-body {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    height: 100%;
+    min-height: 0;
+    padding: 9px;
+}
+
+.mt-side-cart-upsell h3 {
+    display: -webkit-box;
+    min-height: 45px;
+    overflow: hidden;
+    margin: 0;
+    color: #111111;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.25;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.mt-side-cart-upsell-price {
+    display: none;
+    color: #111111;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.mt-side-cart-upsell-form,
+.mt-side-cart-upsell-bundle form.cart {
+    display: grid;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.mt-side-cart-upsell.is-expanded {
+    cursor: default;
+}
+
+.mt-side-cart-upsell.is-expanded .mt-side-cart-upsell-price {
+    display: block;
+}
+
+.mt-side-cart-upsell-variations,
+.mt-side-cart-upsell-bundle .woosb-wrap {
+    display: none;
+    gap: 8px;
+}
+
+.mt-side-cart-upsell.is-expanded .mt-side-cart-upsell-variations,
+.mt-side-cart-upsell.is-expanded .mt-side-cart-upsell-bundle .woosb-wrap {
+    display: grid;
+}
+
+.mt-side-cart-upsell-variations label {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    color: #111111;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.mt-side-cart-upsell-variations select,
+.mt-side-cart-upsell-bundle select {
+    display: block !important;
+    position: static !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto !important;
+    min-height: 34px;
+    margin: 0;
+    border: 1px solid #d0d5dd;
+    border-radius: 3px;
+    background: #ffffff;
+    color: #111111;
+    font-size: 12px;
+}
+
+.mt-side-cart-upsell select.woo-variation-raw-select,
+.mt-side-cart-upsell-bundle select.woo-variation-raw-select {
+    display: block !important;
+}
+
+.mt-side-cart-upsell .variable-items-wrapper,
+.mt-side-cart-upsell .woo-variation-items-wrapper ul,
+.mt-side-cart-upsell-bundle .variable-items-wrapper,
+.mt-side-cart-upsell-bundle .woo-variation-items-wrapper ul {
+    display: none !important;
+}
+
+.mt-side-cart-upsell-add,
+.mt-side-cart-upsell-bundle .single_add_to_cart_button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 32px;
+    margin-top: auto;
+    border: 1px solid #1f5fbf !important;
+    border-radius: 3px !important;
+    background: #1f5fbf !important;
+    color: #ffffff !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.mt-side-cart-upsell-add:hover,
+.mt-side-cart-upsell-add:focus-visible,
+.mt-side-cart-upsell-bundle .single_add_to_cart_button:hover,
+.mt-side-cart-upsell-bundle .single_add_to_cart_button:focus-visible {
+    border-color: #174a96 !important;
+    background: #174a96 !important;
+    color: #ffffff !important;
+}
+
+.mt-side-cart-upsell-tooltip {
+    padding: 7px 8px;
+    border-radius: 3px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.mt-side-cart-upsell-bundle .quantity,
+.mt-side-cart-upsell-bundle .woosb-alert,
+.mt-side-cart-upsell-bundle .woosb-summary,
+.mt-side-cart-upsell-bundle .woosb-thumb,
+.mt-side-cart-upsell-bundle .woosb-price,
+.mt-side-cart-upsell-bundle .woosb-availability {
+    display: none !important;
+}
+
+.mt-side-cart-upsell-bundle .woosb-product {
+    display: grid;
+    gap: 5px;
+}
+
+.mt-side-cart-upsell-bundle .woosb-name {
+    color: #111111;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .mt-side-cart-item {
@@ -291,7 +542,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
 }
 
 .mt-side-cart-tax-note {
-    margin: 6px 0 22px;
+    margin: 6px 0 6px;
     color: #111111;
     font-size: 12px;
     font-weight: 600;
@@ -407,5 +658,13 @@ form.cart.mt-side-cart-add-loading button[name="add-to-cart"]::after {
 
     .mt-side-cart-item-image {
         width: 86px;
+    }
+
+    .mt-side-cart-upsells-controls {
+        display: none;
+    }
+
+    .mt-side-cart-upsells-track {
+        grid-auto-columns: 40%;
     }
 }
