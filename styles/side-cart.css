@@ -204,7 +204,6 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     display: grid;
     grid-template-rows: 142px 1fr;
     height: 100%;
-    min-height: 222px;
     min-width: 0;
     border: 0;
     border-radius: 4px;
@@ -269,6 +268,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     gap: 8px;
     margin-top: auto;
     min-width: 0;
+    margin: 5px 0 !important;
 }
 
 .mt-side-cart-upsell-form .single_add_to_cart_button {
