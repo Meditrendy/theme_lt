@@ -203,7 +203,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     display: grid;
     grid-template-rows: auto 1fr;
     height: 100%;
-    min-height: 290px;
+    min-height: 250px;
     min-width: 0;
     border: 1px solid #e4e7ec;
     border-radius: 4px;
@@ -214,7 +214,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
 
 .mt-side-cart-upsell-image {
     display: block;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 0.82;
     background: #ffffff;
 }
 
@@ -262,12 +262,12 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     margin-top: auto;
 }
 
-.mt-side-cart-upsell.is-expanded {
-    cursor: default;
+.mt-side-cart-upsell-form .single_add_to_cart_button {
+    height: 35px !important;
 }
 
-.mt-side-cart-upsell.is-expanded .mt-side-cart-upsell-price {
-    display: block;
+.mt-side-cart-upsell.is-expanded {
+    cursor: default;
 }
 
 .mt-side-cart-upsell-variations,
@@ -326,18 +326,34 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    min-height: 32px;
+    gap: 8px;
+    width: auto;
+    min-width: 92px;
+    min-height: 28px;
     margin-top: auto;
+    padding: 0 12px !important;
     border: 1px solid #1f5fbf !important;
-    border-radius: 3px !important;
+    border-radius: 2px !important;
     background: #1f5fbf !important;
     color: #ffffff !important;
     font-size: 10px !important;
     font-weight: 800 !important;
-    line-height: 1 !important;
+    line-height: 1.1 !important;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.mt-side-cart-upsell-add::before {
+    content: "+";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.mt-side-cart-upsell-add .amount {
+    color: inherit !important;
+    font: inherit !important;
 }
 
 .mt-side-cart-upsell-add:hover,
@@ -588,6 +604,15 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     cursor: progress;
 }
 
+.mt-side-cart.is-loading .mt-side-cart-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: rgba(255, 255, 255, 0.68);
+    pointer-events: auto;
+}
+
 .mt-side-cart.is-loading .mt-side-cart-quantity,
 .mt-side-cart.is-loading .mt-side-cart-remove,
 .mt-side-cart.is-loading .mt-side-cart-checkout {
@@ -598,6 +623,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
 .mt-side-cart.is-loading .mt-side-cart-inner::after {
     content: "";
     position: absolute;
+    z-index: 5;
     top: 50%;
     left: 50%;
     width: 28px;
@@ -607,6 +633,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     border-top-color: #111111;
     border-radius: 50%;
     animation: mt-side-cart-spin 0.7s linear infinite;
+    pointer-events: none;
 }
 
 @keyframes mt-side-cart-spin {
