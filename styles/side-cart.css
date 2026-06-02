@@ -137,7 +137,8 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     bottom: 0;
     z-index: 2;
     margin-top: auto;
-    padding-top: 18px;
+    padding-top: 1rem;
+    border-top: 1px solid #dddddd;
     background: #ffffff;
 }
 
@@ -201,11 +202,11 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     scroll-snap-align: start;
     align-self: stretch;
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 142px 1fr;
     height: 100%;
-    min-height: 250px;
+    min-height: 222px;
     min-width: 0;
-    border: 1px solid #e4e7ec;
+    border: 0;
     border-radius: 4px;
     background: #f5f6f8;
     cursor: pointer;
@@ -213,9 +214,12 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
 }
 
 .mt-side-cart-upsell-image {
-    display: block;
-    aspect-ratio: 1 / 0.82;
-    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    padding: 8px 8px 0;
+    background: #f5f6f8;
 }
 
 .mt-side-cart-upsell-image img {
@@ -223,6 +227,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: 38% center;
 }
 
 .mt-side-cart-upsell-body {
@@ -231,20 +236,23 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     gap: 7px;
     height: 100%;
     min-height: 0;
-    padding: 9px;
+    min-width: 0;
+    padding: 0 9px;
 }
 
 .mt-side-cart-upsell h3 {
-    display: -webkit-box;
-    min-height: 45px;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-height: 15px;
     overflow: hidden;
     margin: 0;
     color: #111111;
     font-size: 12px;
     font-weight: 700;
     line-height: 1.25;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .mt-side-cart-upsell-price {
@@ -260,6 +268,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     display: grid;
     gap: 8px;
     margin-top: auto;
+    min-width: 0;
 }
 
 .mt-side-cart-upsell-form .single_add_to_cart_button {
@@ -328,6 +337,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     justify-content: center;
     gap: 8px;
     width: auto;
+    max-width: 100%;
     min-width: 92px;
     min-height: 28px;
     margin-top: auto;
@@ -541,8 +551,7 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
 
 .mt-side-cart-footer {
     display: grid;
-    gap: 22px;
-    padding-top: 24px;
+    padding-top: 10px;
     border-top: 1px solid #dddddd;
 }
 
@@ -570,17 +579,22 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     min-height: 50px;
     border-radius: 3px;
     background: #0f5ea8;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 800;
     line-height: 1;
-    letter-spacing: 0.12em;
+    letter-spacing: 0;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
+}
+
+.mt-side-cart-checkout span + span::before {
+    content: "-";
+    margin-right: 8px;
 }
 
 .mt-side-cart-checkout:hover,
