@@ -10,25 +10,13 @@ require_once get_stylesheet_directory() . '/modules/mobile-menu.php';
 add_action( 'wp_enqueue_scripts', 'meditrendy_child_styles' );
 
 function meditrendy_child_styles() {
-    wp_enqueue_style(
-        'parent-style',
-        get_template_directory_uri() . '/style.css'
-    );
-
-    wp_enqueue_style(
-        'child-style',
-        get_stylesheet_uri(),
-        array('parent-style'),
-        filemtime( get_stylesheet_directory() . '/style.css' )
-    );
-
     $header_css_path = get_stylesheet_directory() . '/styles/header.css';
 
     if ( file_exists( $header_css_path ) ) {
         wp_enqueue_style(
             'meditrendy-header',
             get_stylesheet_directory_uri() . '/styles/header.css',
-            array('child-style'),
+            array(),
             filemtime( $header_css_path )
         );
     }
@@ -51,18 +39,18 @@ function meditrendy_child_styles() {
         wp_enqueue_style(
             'meditrendy-side-cart',
             get_stylesheet_directory_uri() . '/styles/side-cart.css',
-            array('child-style'),
+            array(),
             filemtime( $side_cart_css_path )
         );
     }
 
     $categories_css_path = get_stylesheet_directory() . '/styles/categories.css';
 
-    if ( file_exists( $categories_css_path ) ) {
+    if ( file_exists( $categories_css_path ) && meditrendy_should_enqueue_category_styles() ) {
         wp_enqueue_style(
             'meditrendy-categories',
             get_stylesheet_directory_uri() . '/styles/categories.css',
-            array('child-style'),
+            array(),
             filemtime( $categories_css_path )
         );
     }
@@ -73,7 +61,7 @@ function meditrendy_child_styles() {
         wp_enqueue_style(
             'meditrendy-blog',
             get_stylesheet_directory_uri() . '/styles/blog.css',
-            array('child-style'),
+            array(),
             filemtime( $blog_css_path )
         );
     }
@@ -84,7 +72,7 @@ function meditrendy_child_styles() {
         wp_enqueue_style(
             'meditrendy-homepage',
             get_stylesheet_directory_uri() . '/styles/homepage.css',
-            array('child-style'),
+            array(),
             filemtime( $homepage_css_path )
         );
     }
@@ -95,7 +83,7 @@ function meditrendy_child_styles() {
         wp_enqueue_style(
             'meditrendy-product',
             get_stylesheet_directory_uri() . '/styles/product.css',
-            array('child-style'),
+            array(),
             filemtime( $product_css_path )
         );
     }
@@ -130,7 +118,7 @@ function meditrendy_child_styles() {
         wp_enqueue_style(
             'meditrendy-cart-shipping-loading',
             get_stylesheet_directory_uri() . '/styles/cart-shipping-loading.css',
-            array( 'child-style' ),
+            array(),
             filemtime( $cart_shipping_css_path )
         );
     }
@@ -141,7 +129,7 @@ function meditrendy_child_styles() {
         wp_enqueue_style(
             'meditrendy-checkout',
             get_stylesheet_directory_uri() . '/styles/checkout.css',
-            array( 'child-style' ),
+            array(),
             filemtime( $checkout_css_path )
         );
     }
@@ -167,8 +155,22 @@ function meditrendy_child_styles() {
     }
 }
 
+function meditrendy_should_enqueue_category_styles() {
+    if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() || is_product_category() || is_product_tag() ) ) {
+        return true;
+    }
+
+    if ( ! is_singular() ) {
+        return false;
+    }
+
+    $post = get_post();
+
+    return $post && has_shortcode( $post->post_content, 'meditrendy_subcategories' );
+}
+
 function meditrendy_should_enqueue_blog_styles() {
-    if ( is_front_page() || is_home() || is_category() || is_tag() || is_date() || is_author() || is_singular( 'post' ) || is_page_template( 'template-blog-archive.php' ) ) {
+    if ( is_home() || is_category() || is_tag() || is_date() || is_author() || is_singular( 'post' ) || is_page_template( 'template-blog-archive.php' ) ) {
         return true;
     }
 
