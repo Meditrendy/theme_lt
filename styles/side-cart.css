@@ -614,6 +614,22 @@ header .meditrendy-cart-toggle > .xoo-wsc-sc-count {
     overflow: hidden;
 }
 
+.mt-side-cart-upsells.is-loading {
+    min-height: 92px;
+}
+
+.mt-side-cart-upsells.is-loading::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 18px auto 10px;
+    border: 3px solid rgba(17, 17, 17, 0.16);
+    border-top-color: #111111;
+    border-radius: 50%;
+    animation: mt-side-cart-spin 0.7s linear infinite;
+}
+
 .mt-side-cart.is-loading .mt-side-cart-inner {
     cursor: progress;
 }

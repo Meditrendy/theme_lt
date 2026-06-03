@@ -34,6 +34,14 @@
 }
 
 /************************
+ Variation selectors
+ ************************/
+
+.woo-variation-swatches .wvs-style-rounded.variable-items-wrapper .variable-item:not(.radio-variable-item) .variable-item-span {
+    line-height: 2;;
+}
+
+/************************
  Product description
  ************************/
 .single-product .x-wc-add-to-cart-form + .x-text-headline + .x-text.x-content,

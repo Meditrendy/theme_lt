@@ -35,7 +35,10 @@ function meditrendy_child_styles() {
 
     $side_cart_css_path = get_stylesheet_directory() . '/styles/side-cart.css';
 
-    if ( file_exists( $side_cart_css_path ) ) {
+    if (
+        file_exists( $side_cart_css_path ) &&
+        ( ! function_exists( 'meditrendy_cart_module_enabled' ) || meditrendy_cart_module_enabled() )
+    ) {
         wp_enqueue_style(
             'meditrendy-side-cart',
             get_stylesheet_directory_uri() . '/styles/side-cart.css',
