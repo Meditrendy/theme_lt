@@ -42,6 +42,14 @@
 }
 
 /************************
+ Product sets
+ ************************/
+
+ .woosb-summary.woosb-text {
+    display: none !important;
+ }
+
+/************************
  PDP promotions
  ************************/
 .mt-pdp-promotions {
