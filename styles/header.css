@@ -92,6 +92,10 @@
     color: #08437f;
 }
 
+.x-off-canvas .menu-item .x-anchor .x-anchor-content .x-anchor-text-primary {
+    font-size: 14px !important;
+}
+
 /****************
    Desktop menu
 ****************/

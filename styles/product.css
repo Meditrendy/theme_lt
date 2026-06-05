@@ -1,6 +1,15 @@
 /************************
+Breadcrumbs
+ ************************/
+
+.single-product .x-crumbs .x-crumbs-list > *:last-child {
+    display: none !important;
+}
+
+/************************
  Related product color swatches
  ************************/
+
 .single-product .products .mt-color-swatches {
     display: flex;
     align-items: center;
