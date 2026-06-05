@@ -50,12 +50,84 @@
 }
 
 /************************
- Product sets
+ Product sets bundle price
  ************************/
 
  .woosb-summary.woosb-text {
     display: none !important;
  }
+
+/************************
+ PDP price block
+ ************************/
+.mt-pdp-price-block {
+    display: grid;
+    gap: 4px;
+    width: fit-content;
+    max-width: 100%;
+    color: #07111f;
+}
+
+.mt-pdp-price-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mt-pdp-price-current {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 13px;
+    border-radius: 4px;
+    background: #f3f4f6;
+    color: #07111f;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.mt-pdp-price-regular {
+    color: #808080;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.mt-pdp-price-omnibus {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+    color: #808080;
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.25;
+}
+
+.mt-pdp-price-omnibus .wc-price-history-shortcode,
+.mt-pdp-price-omnibus .wc-price-history-lowest-inner,
+.mt-pdp-price-omnibus .wc-price-history.prior-price.lowest {
+    display: inline;
+    width: auto;
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-decoration: none;
+}
+
+.mt-pdp-price-omnibus .woocommerce-Price-amount,
+.mt-pdp-price-omnibus .wc-price-history.prior-price-value,
+.mt-pdp-price-omnibus .wc-price-history-lowest-raw-value {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-decoration: none;
+}
 
 /************************
  PDP promotions
