@@ -96,6 +96,54 @@
     font-size: 14px !important;
 }
 
+.x-off-canvas .x-tabs-list button,
+.x-off-canvas .x-tabs-list a,
+.x-off-canvas [role="tab"],
+.x-off-canvas .x-anchor:not(.xoo-wsc-cart-trigger) .x-anchor-text-primary {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+}
+
+.x-off-canvas ul.x-menu-collapsed > li {
+    margin: 0 !important;
+}
+
+.x-off-canvas ul.x-menu-collapsed > li > a.x-anchor {
+    min-height: 40px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+.x-off-canvas ul.x-menu-collapsed > li > a.x-anchor .x-anchor-content {
+    min-height: 24px !important;
+}
+
+.x-off-canvas .x-tabs,
+.x-off-canvas .x-tabs-content,
+.x-off-canvas .x-tab-content {
+    min-height: 0;
+}
+
+.x-off-canvas .x-tabs {
+    display: flex;
+    flex-direction: column;
+    max-height: 100dvh;
+}
+
+.x-off-canvas .x-tabs-list {
+    flex: 0 0 auto;
+}
+
+.x-off-canvas .x-tabs-content,
+.x-off-canvas .x-tab-content,
+.x-off-canvas [role="tabpanel"] {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: calc(100dvh - 48px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 /****************
    Desktop menu
 ****************/
