@@ -93,7 +93,7 @@
 }
 
 .x-off-canvas .menu-item .x-anchor .x-anchor-content .x-anchor-text-primary {
-    font-size: 14px !important;
+    font-size: 16px !important;
 }
 
 .x-off-canvas .x-tabs-list button,
@@ -110,8 +110,6 @@
 
 .x-off-canvas ul.x-menu-collapsed > li > a.x-anchor {
     min-height: 40px !important;
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
 }
 
 .x-off-canvas ul.x-menu-collapsed > li > a.x-anchor .x-anchor-content {
