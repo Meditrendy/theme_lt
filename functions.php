@@ -21,6 +21,15 @@ function meditrendy_child_styles() {
         );
     }
 
+    $footer_css_path = get_stylesheet_directory() . '/styles/footer.css';
+
+    if ( file_exists( $footer_css_path ) ) {
+        wp_add_inline_style(
+            'meditrendy-header',
+            file_get_contents( $footer_css_path )
+        );
+    }
+
     $desktop_menu_js_path = get_stylesheet_directory() . '/scripts/desktop-menu.js';
 
     if ( file_exists( $desktop_menu_js_path ) ) {
