@@ -19,25 +19,35 @@
     margin-bottom: 14px;
 }
 
-.mt-brand-products .mt-product-card-sale-badge {
+.mt-brand-products .mt-card-badges-shortcode {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 2;
+    display: grid;
+    gap: 4px;
+    pointer-events: none;
+}
+
+.mt-brand-products .mt-card-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 34px;
     padding: 0 6px;
     border-radius: 0;
-    background: #000000;
     color: #ffffff;
     font-size: 13px;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0;
     text-transform: uppercase;
-    pointer-events: none;
+}
+
+.mt-brand-products .mt-card-badge-sale,
+.mt-brand-products .mt-card-badge-new,
+.mt-brand-products .mt-card-badge-bestseller {
+    background: #000000;
 }
 
 .mt-brand-products .product-cart .x-image,

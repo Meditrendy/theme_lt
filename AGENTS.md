@@ -17,6 +17,7 @@ This repository contains the Meditrendy child theme for the Pro theme. Treat it 
 - Prefer stable custom classes and existing theme modules over styling generated Cornerstone classes such as `m1q-*` or `e246-*`.
 - Cornerstone/Pro generated markup can change; avoid depending on brittle generated class names when a custom wrapper or selector is possible.
 - Before editing code that targets Cornerstone-generated markup, check whether the same result can be achieved by adding a class, changing element settings, or editing content in Cornerstone.
+- Prefer shortcode-based customization for Cornerstone output over JavaScript DOM rewriting when the behavior can be expressed server-side.
 - Keep changes focused. Avoid unrelated refactors.
 - Always consider the user experience when making changes.
 - Always consider website performance when making changes.
@@ -39,6 +40,7 @@ Use existing files when the change naturally belongs there. Add a new file only 
 
 - Use `const` and `let` in new JavaScript.
 - Keep JavaScript small and scoped to the affected UI.
+- Use JavaScript for Cornerstone customizations only when a shortcode, template setting, or CSS cannot reasonably solve the problem.
 - Do not add new build tools or external packages without user approval.
 - Avoid global selectors that could affect WooCommerce blocks, product pages, or Cornerstone sections unintentionally.
 - Prefer CSS over JavaScript for styling.

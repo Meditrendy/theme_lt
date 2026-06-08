@@ -67,8 +67,47 @@ Breadcrumbs
  }
 
 /************************
+ PDP product badges
+ ************************/
+.single-product .x-col:has(> .mt-card-badges-shortcode + .x-wc-product-gallery) {
+    position: relative;
+}
+
+.single-product .x-col:has(> .mt-card-badges-shortcode + .x-wc-product-gallery) > .mt-card-badges-shortcode {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    pointer-events: none;
+}
+
+.single-product .mt-card-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 6px;
+    border-radius: 0;
+    background: #000000;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+/************************
  PDP price block
  ************************/
+
 .mt-pdp-price-block {
     display: grid;
     gap: 4px;
