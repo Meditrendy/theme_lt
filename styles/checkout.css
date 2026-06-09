@@ -53,18 +53,18 @@
     line-height: 1.3;
 }
 
-.meditrendy-checkout-invoice-fields__field input {
+.wc-block-checkout .meditrendy-checkout-invoice-fields__field input {
     width: 100%;
     min-height: 50px;
     padding: 12px 14px;
-    border: 1px solid #000;
+    border: 1px solid #000 !important;
     border-radius: 4px;
     background: #fff;
     color: #111827;
     font: inherit;
 }
 
-.meditrendy-checkout-invoice-fields__field input:focus {
+.wc-block-checkout .meditrendy-checkout-invoice-fields__field input:focus {
     border-color: #000;
     outline: 1px solid #000;
     outline-offset: 0;
