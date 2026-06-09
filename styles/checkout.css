@@ -6,3 +6,66 @@
 .wc-block-components-product-metadata__description {
     display: none;
 }
+
+/* Checkout invoice fields */
+.meditrendy-checkout-invoice-fields {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #d8d8d8;
+}
+
+.meditrendy-checkout-invoice-fields__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: #111827;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.meditrendy-checkout-invoice-fields__toggle input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    flex: 0 0 auto;
+}
+
+.meditrendy-checkout-invoice-fields__details {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.meditrendy-checkout-invoice-fields__details[hidden] {
+    display: none;
+}
+
+.meditrendy-checkout-invoice-fields__field {
+    display: grid;
+    gap: 6px;
+}
+
+.meditrendy-checkout-invoice-fields__field label {
+    color: #111827;
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.meditrendy-checkout-invoice-fields__field input {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 14px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background: #fff;
+    color: #111827;
+    font: inherit;
+}
+
+.meditrendy-checkout-invoice-fields__field input:focus {
+    border-color: #000;
+    outline: 1px solid #000;
+    outline-offset: 0;
+}
