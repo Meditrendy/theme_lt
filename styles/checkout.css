@@ -2,3 +2,7 @@
 .wc-block-checkout .wc-block-components-address-form__company + .wc-block-components-country-input {
     margin-top: 16px;
 }
+
+.wc-block-components-product-metadata__description {
+    display: none;
+}
