@@ -311,6 +311,33 @@ Breadcrumbs
     display: block;
 }
 
+.mt-pdp-promotion-sale {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.mt-pdp-promotion-sale .mt-pdp-promotion-main,
+.mt-pdp-promotion-sale .mt-pdp-promotion-meta {
+    grid-column: 1;
+}
+
+.mt-pdp-promotion-sale .mt-pdp-promotion-main {
+    justify-content: space-between;
+}
+
+.mt-pdp-promotion-sale .mt-pdp-promotion-label {
+    white-space: normal;
+}
+
+.mt-pdp-promotion-sale .mt-pdp-promotion-discount {
+    order: 2;
+    margin-left: auto;
+    text-align: right;
+}
+
+.mt-pdp-promotion-sale [data-mt-promo-countdown] {
+    font-weight: 700;
+}
+
 @media (max-width: 560px) {
     .mt-pdp-promotion {
         grid-template-columns: minmax(0, 1fr) 34px;
