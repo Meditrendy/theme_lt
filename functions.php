@@ -21,6 +21,21 @@ function meditrendy_child_styles() {
         );
     }
 
+    $marketing_banner_css_path = get_stylesheet_directory() . '/styles/marketing-banner.css';
+
+    if (
+        file_exists( $marketing_banner_css_path ) &&
+        function_exists( 'meditrendy_marketing_banner_is_visible' ) &&
+        meditrendy_marketing_banner_is_visible()
+    ) {
+        wp_enqueue_style(
+            'meditrendy-marketing-banner',
+            get_stylesheet_directory_uri() . '/styles/marketing-banner.css',
+            array(),
+            filemtime( $marketing_banner_css_path )
+        );
+    }
+
     $footer_css_path = get_stylesheet_directory() . '/styles/footer.css';
 
     if ( file_exists( $footer_css_path ) ) {
@@ -87,6 +102,18 @@ function meditrendy_child_styles() {
             array(),
             filemtime( $homepage_css_path )
         );
+
+        $homepage_js_path = get_stylesheet_directory() . '/scripts/homepage.js';
+
+        if ( file_exists( $homepage_js_path ) ) {
+            wp_enqueue_script(
+                'meditrendy-homepage',
+                get_stylesheet_directory_uri() . '/scripts/homepage.js',
+                array(),
+                filemtime( $homepage_js_path ),
+                true
+            );
+        }
     }
 
     $product_css_path = get_stylesheet_directory() . '/styles/product.css';
