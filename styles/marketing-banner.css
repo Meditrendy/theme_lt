@@ -1,0 +1,151 @@
+/* Top marketing banner */
+
+.mt-marketing-banner {
+    width: 100%;
+    background: var(--mt-marketing-banner-bg, #0f5ea8);
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.mt-marketing-banner__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    width: min(100%, 1280px);
+    min-height: 38px;
+    margin: 0 auto;
+    padding: 7px 20px;
+}
+
+.mt-marketing-banner__message {
+    font-weight: 700;
+    text-align: center;
+}
+
+.mt-marketing-banner__message p {
+    margin: 0;
+}
+
+.mt-marketing-banner__coupon,
+.mt-marketing-banner__countdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.mt-marketing-banner__coupon-label,
+.mt-marketing-banner__countdown span {
+    opacity: 0.78;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.mt-marketing-banner__coupon-code,
+.mt-marketing-banner__countdown strong {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #07111f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0;
+}
+
+.mt-marketing-banner__copy,
+.mt-marketing-banner__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 4px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 5px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.mt-marketing-banner__copy:hover,
+.mt-marketing-banner__copy:focus-visible,
+.mt-marketing-banner__cta:hover,
+.mt-marketing-banner__cta:focus-visible {
+    border-color: #ffffff;
+    background: #ffffff;
+    color: #07111f;
+}
+
+.mt-marketing-banner__copy.is-copied {
+    border-color: #ffffff;
+    background: #ffffff;
+    color: #07111f;
+}
+
+.mt-marketing-banner__close {
+    position: relative;
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.mt-marketing-banner__close::before,
+.mt-marketing-banner__close::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 2px;
+    background: currentColor;
+}
+
+.mt-marketing-banner__close::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.mt-marketing-banner__close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media (max-width: 767px) {
+    .mt-marketing-banner__inner {
+        justify-content: flex-start;
+        gap: 8px 10px;
+        min-height: 42px;
+        padding: 8px 14px;
+    }
+
+    .mt-marketing-banner__message {
+        flex: 1 1 100%;
+        text-align: left;
+    }
+
+    .mt-marketing-banner__coupon,
+    .mt-marketing-banner__countdown {
+        white-space: normal;
+    }
+
+    .mt-marketing-banner__cta {
+        margin-left: auto;
+    }
+
+    .mt-marketing-banner__close {
+        margin-left: auto;
+    }
+}
