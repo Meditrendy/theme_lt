@@ -18,20 +18,24 @@
     next.disabled = track.scrollLeft >= maxScroll;
   };
 
-  const addControls = (section, titleRow, track) => {
+  const addControls = (section, imageRow, track) => {
     if (section.querySelector('.mt-home-color-carousel__controls')) return;
 
-    const titleInner = titleRow ? (titleRow.querySelector(':scope > .x-row-inner') || titleRow) : section;
-    const controls = document.createElement('div');
-    controls.className = 'mt-home-color-carousel__controls';
-    controls.innerHTML = `
-      <button class="mt-home-color-carousel__button mt-home-color-carousel__button--prev" type="button" aria-label="Slinkti atgal"></button>
-      <button class="mt-home-color-carousel__button mt-home-color-carousel__button--next" type="button" aria-label="Slinkti pirmyn"></button>
-    `;
+    const prev = document.createElement('button');
+    const next = document.createElement('button');
 
-    titleInner.appendChild(controls);
+    prev.className = 'mt-home-color-carousel__button mt-home-color-carousel__button--prev';
+    prev.type = 'button';
+    prev.setAttribute('aria-label', 'Slinkti atgal');
 
-    controls.addEventListener('click', (event) => {
+    next.className = 'mt-home-color-carousel__button mt-home-color-carousel__button--next';
+    next.type = 'button';
+    next.setAttribute('aria-label', 'Slinkti pirmyn');
+
+    imageRow.insertBefore(prev, track);
+    imageRow.appendChild(next);
+
+    imageRow.addEventListener('click', (event) => {
       const button = event.target.closest('.mt-home-color-carousel__button');
       if (!button) return;
 
@@ -89,7 +93,7 @@
     imageRow.classList.add('mt-home-color-carousel__row');
     track.classList.add('mt-home-color-carousel__track');
 
-    addControls(section, titleRow, track);
+    addControls(section, imageRow, track);
     updateButtons(section, track);
 
     track.addEventListener('scroll', () => {

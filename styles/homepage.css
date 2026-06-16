@@ -161,18 +161,19 @@
     align-items: center;
 }
 
-.mt-home-color-carousel__controls {
-    display: none;
-}
-
 .mt-home-color-carousel__row {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
     overflow: visible;
 }
 
 .mt-home-color-carousel__track {
     display: flex !important;
+    flex: 1 1 auto;
     flex-wrap: nowrap !important;
     gap: 16px;
+    min-width: 0;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
@@ -203,26 +204,11 @@
     height: auto;
 }
 
+.mt-home-color-carousel__button {
+    display: none;
+}
+
 @media (min-width: 980px) {
-    .mt-home-color-carousel .mt-home-color-carousel__header > .x-row-inner {
-        display: flex;
-        justify-content: space-between;
-        gap: 24px;
-    }
-
-    .mt-home-color-carousel .mt-home-color-carousel__header .x-col {
-        width: auto !important;
-        flex: 1 1 auto !important;
-    }
-
-    .mt-home-color-carousel__controls {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 8px;
-        margin-left: auto;
-    }
-
     .mt-home-color-carousel__button {
         position: relative;
         display: inline-flex;
