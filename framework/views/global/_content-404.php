@@ -8,5 +8,5 @@
 
 ?>
 
-<p class="center-text"><?php esc_html_e('Puslapis, kurio ieškote, nerastas. Pabandykite pasinaudoti paieška arba grįžkite į pagrindinį puslapį.', 'pro-child'); ?></p>
+<p class="center-text"><?php esc_html_e( 'Puslapis, kurio ieškote, nerastas. Pabandykite pasinaudoti paieška arba grįžkite į pagrindinį puslapį.', 'pro-child' ); ?></p>
 <?php get_search_form(); ?>
