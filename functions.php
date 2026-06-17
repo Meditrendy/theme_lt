@@ -3,6 +3,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 require_once get_stylesheet_directory() . '/modules/mobile-menu.php';
 
+add_filter( 'gettext', 'meditrendy_translate_404_text', 20, 3 );
+
+function meditrendy_translate_404_text( $translation, $text, $domain ) {
+    if ( $domain === '__x__' && is_404() && $text === 'Oops!' ) {
+        return 'Puslapis nerastas';
+    }
+
+    return $translation;
+}
+
 /**
  * Load parent + child styles and scripts
  */
