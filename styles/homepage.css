@@ -209,6 +209,13 @@
 }
 
 @media (min-width: 980px) {
+    .mt-home-color-carousel__row {
+        --mt-home-color-size: clamp(118px, 11.5vw, 150px);
+        --mt-home-color-gap: clamp(20px, 3vw, 48px);
+        justify-content: center;
+        gap: 16px;
+    }
+
     .mt-home-color-carousel__button {
         position: relative;
         display: inline-flex;
@@ -256,12 +263,15 @@
     }
 
     .mt-home-color-carousel__track {
-        gap: 20px;
+        flex: 0 1 auto;
+        width: auto;
+        max-width: 942px;
+        gap: var(--mt-home-color-gap);
     }
 
     .mt-home-color-carousel__track > .x-col {
-        flex-basis: calc((100% - 80px) / 5) !important;
-        width: calc((100% - 80px) / 5) !important;
-        max-width: calc((100% - 80px) / 5) !important;
+        flex-basis: var(--mt-home-color-size) !important;
+        width: var(--mt-home-color-size) !important;
+        max-width: var(--mt-home-color-size) !important;
     }
 }
