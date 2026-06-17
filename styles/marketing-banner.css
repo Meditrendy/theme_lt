@@ -8,6 +8,16 @@
     line-height: 1.35;
 }
 
+.mt-marketing-banner--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+body.admin-bar .mt-marketing-banner--sticky {
+    top: 32px;
+}
+
 .mt-marketing-banner__inner {
     display: flex;
     align-items: center;
@@ -27,6 +37,18 @@
 
 .mt-marketing-banner__message p {
     margin: 0;
+}
+
+.mt-marketing-banner__message a {
+    color: inherit;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.mt-marketing-banner__message a:hover,
+.mt-marketing-banner__message a:focus-visible {
+    opacity: 0.85;
 }
 
 .mt-marketing-banner__coupon,
@@ -147,5 +169,11 @@
 
     .mt-marketing-banner__close {
         margin-left: auto;
+    }
+}
+
+@media (max-width: 782px) {
+    body.admin-bar .mt-marketing-banner--sticky {
+        top: 46px;
     }
 }
