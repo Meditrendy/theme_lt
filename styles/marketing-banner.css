@@ -19,6 +19,7 @@ body.admin-bar .mt-marketing-banner--sticky {
 }
 
 .mt-marketing-banner__inner {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,7 +31,13 @@ body.admin-bar .mt-marketing-banner--sticky {
     padding: 7px 20px;
 }
 
+.mt-marketing-banner__inner:has(.mt-marketing-banner__close) {
+    padding-right: 56px;
+    padding-left: 56px;
+}
+
 .mt-marketing-banner__message {
+    flex: 1 1 auto;
     font-weight: 700;
     text-align: center;
 }
@@ -115,7 +122,9 @@ body.admin-bar .mt-marketing-banner--sticky {
 }
 
 .mt-marketing-banner__close {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    right: 20px;
     flex: 0 0 auto;
     width: 28px;
     height: 28px;
@@ -124,6 +133,7 @@ body.admin-bar .mt-marketing-banner--sticky {
     background: transparent;
     color: #ffffff;
     cursor: pointer;
+    transform: translateY(-50%);
 }
 
 .mt-marketing-banner__close::before,
@@ -147,15 +157,20 @@ body.admin-bar .mt-marketing-banner--sticky {
 
 @media (max-width: 767px) {
     .mt-marketing-banner__inner {
-        justify-content: flex-start;
+        justify-content: center;
         gap: 8px 10px;
         min-height: 42px;
         padding: 8px 14px;
     }
 
+    .mt-marketing-banner__inner:has(.mt-marketing-banner__close) {
+        padding-right: 52px;
+        padding-left: 52px;
+    }
+
     .mt-marketing-banner__message {
-        flex: 1 1 100%;
-        text-align: left;
+        flex: 1 1 auto;
+        text-align: center;
     }
 
     .mt-marketing-banner__coupon,
@@ -168,7 +183,7 @@ body.admin-bar .mt-marketing-banner--sticky {
     }
 
     .mt-marketing-banner__close {
-        margin-left: auto;
+        right: 14px;
     }
 }
 

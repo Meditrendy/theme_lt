@@ -321,7 +321,7 @@ Breadcrumbs
 }
 
 .mt-pdp-promotion-sale .mt-pdp-promotion-main {
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .mt-pdp-promotion-sale .mt-pdp-promotion-label {
@@ -330,8 +330,13 @@ Breadcrumbs
 
 .mt-pdp-promotion-sale .mt-pdp-promotion-discount {
     order: 2;
-    margin-left: auto;
-    text-align: right;
+    margin-left: 0;
+    text-align: left;
+}
+
+.mt-pdp-promotion-sale .mt-pdp-promotion-meta {
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .mt-pdp-promotion-sale [data-mt-promo-countdown] {
