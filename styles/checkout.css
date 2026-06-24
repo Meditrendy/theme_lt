@@ -93,6 +93,30 @@
     outline-offset: 0;
 }
 
+.meditrendy-checkout-invoice-fields__error {
+    color: #b91c1c;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+/* Checkout terms consent */
+.wc-block-checkout .meditrendy-checkout-terms-consent a,
+form.checkout .meditrendy-checkout-terms-consent a {
+    color: #0057b8;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+}
+
+.wc-block-checkout .meditrendy-checkout-terms-consent a:hover,
+.wc-block-checkout .meditrendy-checkout-terms-consent a:focus-visible,
+form.checkout .meditrendy-checkout-terms-consent a:hover,
+form.checkout .meditrendy-checkout-terms-consent a:focus-visible {
+    color: #003f87;
+    text-decoration-thickness: 2px;
+}
+
 @media (max-width: 600px) {
     .meditrendy-checkout-invoice-fields__row {
         grid-template-columns: 1fr;
