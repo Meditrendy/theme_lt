@@ -1,6 +1,8 @@
 /* Top marketing banner */
 
 .mt-marketing-banner {
+    --mt-marketing-banner-edge-offset: 20px;
+
     width: 100%;
     background: var(--mt-marketing-banner-bg, #0f5ea8);
     color: #ffffff;
@@ -124,7 +126,7 @@ body.admin-bar .mt-marketing-banner--sticky {
 .mt-marketing-banner__close {
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: var(--mt-marketing-banner-edge-offset);
     flex: 0 0 auto;
     width: 28px;
     height: 28px;
@@ -156,6 +158,10 @@ body.admin-bar .mt-marketing-banner--sticky {
 }
 
 @media (max-width: 767px) {
+    .mt-marketing-banner {
+        --mt-marketing-banner-edge-offset: 14px;
+    }
+
     .mt-marketing-banner__inner {
         justify-content: center;
         gap: 8px 10px;
@@ -181,14 +187,16 @@ body.admin-bar .mt-marketing-banner--sticky {
     .mt-marketing-banner__cta {
         margin-left: auto;
     }
-
-    .mt-marketing-banner__close {
-        right: 14px;
-    }
 }
 
 @media (max-width: 782px) {
     body.admin-bar .mt-marketing-banner--sticky {
         top: 46px;
+    }
+}
+
+@media (min-width: 1281px) {
+    .mt-marketing-banner__close {
+        right: calc(((100vw - 1280px) / -2) + var(--mt-marketing-banner-edge-offset));
     }
 }
