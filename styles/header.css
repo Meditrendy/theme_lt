@@ -345,3 +345,23 @@ Desktop cart badge
 .meditrendy-cart-count {
     width: 16px;
 }
+
+/****************
+Mobile SVG logo
+****************/
+
+@media (max-width: 767px) {
+  .mt-mobile-header-logo {
+    flex: 0 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 150px !important;
+  }
+
+  .mt-mobile-header-logo .x-image,
+  .mt-mobile-header-logo img {
+    width: 140px !important;
+    max-width: 140px !important;
+    height: auto !important;
+  }
+}

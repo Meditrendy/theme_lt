@@ -50,6 +50,28 @@ Breadcrumbs
     line-height: 2;;
 }
 
+/* Product variation swatches with longer labels, such as "One Size". */
+.single-product .variable-items-wrapper .variable-item.button-variable-item {
+    width: auto !important;
+    min-width: 50px !important;
+    height: auto !important;
+    min-height: 40px !important;
+    padding: 0 8px !important;
+}
+
+.single-product .variable-items-wrapper .variable-item.button-variable-item .variable-item-contents {
+    min-height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-product .variable-items-wrapper .variable-item.button-variable-item .variable-item-span {
+    line-height: 1.15 !important;
+    white-space: normal;
+    text-align: center;
+}
+
 /************************
  Product description
  ************************/
