@@ -166,6 +166,28 @@ function meditrendy_child_styles() {
                 ),
             )
         );
+
+        $meditrendy_select_size_label = 'Pasirinkite dydį';
+
+        if ( function_exists( 'pll_current_language' ) ) {
+            $meditrendy_language = pll_current_language( 'slug' );
+
+            if ( 'lv' === $meditrendy_language ) {
+                $meditrendy_select_size_label = 'Izvēlieties izmēru';
+            } elseif ( 'et' === $meditrendy_language || 'ee' === $meditrendy_language ) {
+                $meditrendy_select_size_label = 'Vali suurus';
+            }
+        }
+
+        wp_localize_script(
+            'meditrendy-buy-now-pdp-button',
+            'MeditrendyBuyNowPdpButton',
+            array(
+                'labels' => array(
+                    'selectSize' => $meditrendy_select_size_label,
+                ),
+            )
+        );
     }
 
     $cart_shipping_css_path = get_stylesheet_directory() . '/styles/cart-shipping-loading.css';
