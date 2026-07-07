@@ -316,6 +316,12 @@ function mt_preset_accordion() {
     $details_field  = get_field_object('details_fit', $preset_id);
     $delivery_field = get_field_object('delivery_info', $preset_id);
 
+    if (function_exists('meditrendy_preset_translated_field')) {
+        $fabric_field = meditrendy_preset_translated_field($preset_id, 'fabric', $fabric_field);
+        $details_field = meditrendy_preset_translated_field($preset_id, 'details_fit', $details_field);
+        $delivery_field = meditrendy_preset_translated_field($preset_id, 'delivery_info', $delivery_field);
+    }
+
     ob_start();
     ?>
 
@@ -325,7 +331,7 @@ function mt_preset_accordion() {
         <details>
             <summary><?php echo esc_html($details_field['label']); ?></summary>
             <div class="acc-content">
-                <?php echo $details_field['value']; ?>
+                <?php echo wp_kses_post($details_field['value']); ?>
             </div>
         </details>
         <?php endif; ?>
@@ -334,7 +340,7 @@ function mt_preset_accordion() {
         <details>
             <summary><?php echo esc_html($fabric_field['label']); ?></summary>
             <div class="acc-content">
-                <?php echo $fabric_field['value']; ?>
+                <?php echo wp_kses_post($fabric_field['value']); ?>
             </div>
         </details>
         <?php endif; ?>
@@ -343,7 +349,7 @@ function mt_preset_accordion() {
         <details>
             <summary><?php echo esc_html($delivery_field['label']); ?></summary>
             <div class="acc-content">
-                <?php echo $delivery_field['value']; ?>
+                <?php echo wp_kses_post($delivery_field['value']); ?>
             </div>
         </details>
         <?php endif; ?>
