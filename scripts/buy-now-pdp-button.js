@@ -17,6 +17,34 @@
             ? window.MeditrendyBuyNowPdpButton.labels.selectSize
             : 'Pasirinkite dyd\u012f';
 
+    const bundleAlertLabel =
+        window.MeditrendyBuyNowPdpButton &&
+        window.MeditrendyBuyNowPdpButton.labels &&
+        window.MeditrendyBuyNowPdpButton.labels.woosbAlertSelection
+            ? window.MeditrendyBuyNowPdpButton.labels.woosbAlertSelection
+            : label;
+
+    function overrideBundleAlertText() {
+        if (window.woosb_vars) {
+            window.woosb_vars.alert_selection = bundleAlertLabel;
+        }
+
+        $('.woosb-alert').each(function () {
+            const alert = $(this);
+            const text = alert.text().trim().toLowerCase();
+
+            if (text.indexOf('pasirinkite') !== -1 && text.indexOf('dyd') !== -1) {
+                alert.text(bundleAlertLabel);
+            }
+        });
+    }
+
+    function scheduleBundleAlertOverride() {
+        overrideBundleAlertText();
+        setTimeout(overrideBundleAlertText, 10);
+        setTimeout(overrideBundleAlertText, 100);
+    }
+
     function getButtons() {
         return $(buttonSelectors.join(','));
     }
@@ -234,11 +262,13 @@
         function () {
             setTimeout(keepButtonsActive, 10);
             setTimeout(keepButtonsActive, 100);
+            scheduleBundleAlertOverride();
         }
     );
 
     $(document).on('click', buttonSelectors.join(','), function (event) {
         const button = $(this);
+        scheduleBundleAlertOverride();
 
         if (isProductReady(button)) {
             return true;
@@ -250,6 +280,7 @@
         keepButtonsActive();
         showTooltip(button);
         focusFirstMissingField(button);
+        scheduleBundleAlertOverride();
 
         return false;
     });
@@ -273,6 +304,7 @@
         keepButtonsActive();
         showTooltip(button);
         focusFirstMissingField(button);
+        scheduleBundleAlertOverride();
     }
 
     window.addEventListener('click', function (event) {
@@ -288,6 +320,7 @@
     $(document).on('submit', 'form.cart, form.variations_form', function (event) {
         const form = $(this);
         const button = form.find('.single_add_to_cart_button').first();
+        scheduleBundleAlertOverride();
 
         if (!button.length) {
             return true;
@@ -303,6 +336,7 @@
         keepButtonsActive();
         showTooltip(button);
         focusFirstMissingField(button);
+        scheduleBundleAlertOverride();
 
         return false;
     });
@@ -320,6 +354,7 @@
 
     $(function () {
         keepButtonsActive();
+        scheduleBundleAlertOverride();
 
         const observer = new MutationObserver(function () {
             keepButtonsActive();
@@ -332,6 +367,17 @@
             });
         });
 
+        if (document.body) {
+            const alertObserver = new MutationObserver(overrideBundleAlertText);
+
+            alertObserver.observe(document.body, {
+                childList: true,
+                subtree: true,
+                characterData: true
+            });
+        }
+
         setInterval(keepButtonsActive, 500);
+        window.addEventListener('load', scheduleBundleAlertOverride);
     });
 })(jQuery);

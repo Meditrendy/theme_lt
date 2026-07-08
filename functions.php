@@ -185,6 +185,7 @@ function meditrendy_child_styles() {
             array(
                 'labels' => array(
                     'selectSize' => $meditrendy_select_size_label,
+                    'woosbAlertSelection' => $meditrendy_select_size_label,
                 ),
             )
         );
