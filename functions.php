@@ -101,6 +101,17 @@ function meditrendy_child_styles() {
         );
     }
 
+    $search_empty_css_path = get_stylesheet_directory() . '/styles/search-empty.css';
+
+    if ( is_search() && file_exists( $search_empty_css_path ) ) {
+        wp_enqueue_style(
+            'meditrendy-search-empty',
+            get_stylesheet_directory_uri() . '/styles/search-empty.css',
+            array(),
+            filemtime( $search_empty_css_path )
+        );
+    }
+
     $blog_css_path = get_stylesheet_directory() . '/styles/blog.css';
 
     if ( file_exists( $blog_css_path ) && meditrendy_should_enqueue_blog_styles() ) {
@@ -277,6 +288,157 @@ function meditrendy_should_enqueue_blog_styles() {
         has_shortcode( $post->post_content, 'meditrendy_blog_archive' ) ||
         has_shortcode( $post->post_content, 'meditrendy_blog_home' )
     );
+}
+
+function meditrendy_is_product_search_request() {
+    if ( ! is_search() ) {
+        return false;
+    }
+
+    $post_type = get_query_var( 'post_type' );
+
+    if ( is_array( $post_type ) ) {
+        return in_array( 'product', $post_type, true );
+    }
+
+    return 'product' === $post_type || ( isset( $_GET['post_type'] ) && 'product' === sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) );
+}
+
+function meditrendy_search_empty_copy() {
+    $labels = array(
+        'lt' => array(
+            'eyebrow'      => __( 'Paieškos rezultatai', 'meditrendy-child' ),
+            'title'        => __( 'Nieko neradome', 'meditrendy-child' ),
+            'description'  => __( 'Pabandykite pakeisti paieškos frazę arba peržiūrėkite populiariausias prekių kategorijas.', 'meditrendy-child' ),
+            'search_label' => __( 'Ieškoti dar kartą', 'meditrendy-child' ),
+            'placeholder'  => __( 'Įveskite paieškos frazę', 'meditrendy-child' ),
+            'submit'       => __( 'Ieškoti', 'meditrendy-child' ),
+            'shop'         => __( 'Peržiūrėti visas prekes', 'meditrendy-child' ),
+            'home'         => __( 'Grįžti į pradžią', 'meditrendy-child' ),
+            'query_prefix' => __( 'Ieškota:', 'meditrendy-child' ),
+        ),
+        'lv' => array(
+            'eyebrow'      => __( 'Meklēšanas rezultāti', 'meditrendy-child' ),
+            'title'        => __( 'Nekas netika atrasts', 'meditrendy-child' ),
+            'description'  => __( 'Mēģiniet mainīt meklēšanas frāzi vai apskatiet populārākās preču kategorijas.', 'meditrendy-child' ),
+            'search_label' => __( 'Meklēt vēlreiz', 'meditrendy-child' ),
+            'placeholder'  => __( 'Ievadiet meklēšanas frāzi', 'meditrendy-child' ),
+            'submit'       => __( 'Meklēt', 'meditrendy-child' ),
+            'shop'         => __( 'Skatīt visas preces', 'meditrendy-child' ),
+            'home'         => __( 'Atgriezties sākumā', 'meditrendy-child' ),
+            'query_prefix' => __( 'Meklēts:', 'meditrendy-child' ),
+        ),
+        'et' => array(
+            'eyebrow'      => __( 'Otsingu tulemused', 'meditrendy-child' ),
+            'title'        => __( 'Tulemusi ei leitud', 'meditrendy-child' ),
+            'description'  => __( 'Proovige otsingufraasi muuta või vaadake populaarsemaid tootekategooriaid.', 'meditrendy-child' ),
+            'search_label' => __( 'Otsi uuesti', 'meditrendy-child' ),
+            'placeholder'  => __( 'Sisestage otsingufraas', 'meditrendy-child' ),
+            'submit'       => __( 'Otsi', 'meditrendy-child' ),
+            'shop'         => __( 'Vaata kõiki tooteid', 'meditrendy-child' ),
+            'home'         => __( 'Tagasi avalehele', 'meditrendy-child' ),
+            'query_prefix' => __( 'Otsiti:', 'meditrendy-child' ),
+        ),
+        'en' => array(
+            'eyebrow'      => __( 'Search results', 'meditrendy-child' ),
+            'title'        => __( 'No results found', 'meditrendy-child' ),
+            'description'  => __( 'Try changing your search phrase or browse the most popular product categories.', 'meditrendy-child' ),
+            'search_label' => __( 'Search again', 'meditrendy-child' ),
+            'placeholder'  => __( 'Enter a search phrase', 'meditrendy-child' ),
+            'submit'       => __( 'Search', 'meditrendy-child' ),
+            'shop'         => __( 'View all products', 'meditrendy-child' ),
+            'home'         => __( 'Back to home', 'meditrendy-child' ),
+            'query_prefix' => __( 'Searched for:', 'meditrendy-child' ),
+        ),
+        'pl' => array(
+            'eyebrow'      => __( 'Wyniki wyszukiwania', 'meditrendy-child' ),
+            'title'        => __( 'Nic nie znaleziono', 'meditrendy-child' ),
+            'description'  => __( 'Spróbuj zmienić wyszukiwaną frazę albo przejrzyj najpopularniejsze kategorie produktów.', 'meditrendy-child' ),
+            'search_label' => __( 'Wyszukaj ponownie', 'meditrendy-child' ),
+            'placeholder'  => __( 'Wpisz szukaną frazę', 'meditrendy-child' ),
+            'submit'       => __( 'Szukaj', 'meditrendy-child' ),
+            'shop'         => __( 'Zobacz wszystkie produkty', 'meditrendy-child' ),
+            'home'         => __( 'Wróć na stronę główną', 'meditrendy-child' ),
+            'query_prefix' => __( 'Szukano:', 'meditrendy-child' ),
+        ),
+    );
+
+    $language = function_exists( 'pll_current_language' ) ? pll_current_language( 'slug' ) : 'lt';
+
+    if ( 'ee' === $language ) {
+        $language = 'et';
+    }
+
+    return isset( $labels[ $language ] ) ? $labels[ $language ] : $labels['lt'];
+}
+
+function meditrendy_render_search_empty_state() {
+    $search_query = get_search_query();
+    $copy         = meditrendy_search_empty_copy();
+    $shop_url     = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/' );
+    ?>
+
+    <section class="mt-search-empty" aria-labelledby="mt-search-empty-title">
+        <div class="mt-search-empty__inner">
+            <p class="mt-search-empty__eyebrow"><?php echo esc_html( $copy['eyebrow'] ); ?></p>
+            <h2 id="mt-search-empty-title" class="mt-search-empty__title"><?php echo esc_html( $copy['title'] ); ?></h2>
+
+            <?php if ( $search_query ) : ?>
+                <p class="mt-search-empty__query">
+                    <span><?php echo esc_html( $copy['query_prefix'] ); ?></span>
+                    <strong><?php echo esc_html( $search_query ); ?></strong>
+                </p>
+            <?php endif; ?>
+
+            <p class="mt-search-empty__description"><?php echo esc_html( $copy['description'] ); ?></p>
+
+            <form class="mt-search-empty__form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                <label class="screen-reader-text" for="mt-search-empty-field"><?php echo esc_html( $copy['search_label'] ); ?></label>
+                <input
+                    id="mt-search-empty-field"
+                    class="mt-search-empty__input"
+                    type="search"
+                    name="s"
+                    value="<?php echo esc_attr( $search_query ); ?>"
+                    placeholder="<?php echo esc_attr( $copy['placeholder'] ); ?>"
+                >
+                <input type="hidden" name="post_type" value="product">
+                <input type="hidden" name="dgwt_wcas" value="1">
+                <button class="mt-search-empty__submit" type="submit"><?php echo esc_html( $copy['submit'] ); ?></button>
+            </form>
+
+            <div class="mt-search-empty__actions">
+                <a class="mt-search-empty__button mt-search-empty__button--primary" href="<?php echo esc_url( $shop_url ); ?>">
+                    <?php echo esc_html( $copy['shop'] ); ?>
+                </a>
+                <a class="mt-search-empty__button" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <?php echo esc_html( $copy['home'] ); ?>
+                </a>
+            </div>
+        </div>
+    </section>
+    <?php
+}
+
+function meditrendy_should_render_search_empty_state() {
+    global $wp_query;
+
+    return meditrendy_is_product_search_request() && $wp_query instanceof WP_Query && 0 === (int) $wp_query->found_posts;
+}
+
+add_shortcode( 'meditrendy_search_empty_state', 'meditrendy_search_empty_state_shortcode' );
+
+function meditrendy_search_empty_state_shortcode() {
+    if ( ! meditrendy_should_render_search_empty_state() ) {
+        return '';
+    }
+
+    ob_start();
+    echo '<div class="woocommerce-no-products-found">';
+    meditrendy_render_search_empty_state();
+    echo '</div>';
+
+    return ob_get_clean();
 }
 
 /* =========================================

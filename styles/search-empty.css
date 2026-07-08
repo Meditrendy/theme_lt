@@ -1,0 +1,135 @@
+/* Empty product search results */
+.mt-search-empty {
+    width: min(100%, 1120px);
+    margin: 48px auto 72px;
+    padding: 0 24px;
+}
+
+.mt-search-empty__inner {
+    border: 1px solid #e5e0da;
+    background: #ffffff;
+    padding: 42px;
+    text-align: center;
+}
+
+.mt-search-empty__eyebrow {
+    margin: 0 0 10px;
+    color: #756c63;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.mt-search-empty__title {
+    margin: 0;
+    color: #202020;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.mt-search-empty__query {
+    margin: 18px 0 0;
+    color: #514a44;
+    font-size: 15px;
+}
+
+.mt-search-empty__query span {
+    margin-right: 6px;
+}
+
+.mt-search-empty__description {
+    max-width: 620px;
+    margin: 18px auto 0;
+    color: #514a44;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.mt-search-empty__form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    max-width: 620px;
+    margin: 28px auto 0;
+}
+
+.mt-search-empty__input {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid #cfc8c0;
+    border-radius: 0;
+    padding: 0 16px;
+    background: #ffffff;
+    color: #202020;
+    font-size: 15px;
+}
+
+.mt-search-empty__input:focus {
+    border-color: #202020;
+    outline: 2px solid transparent;
+}
+
+.mt-search-empty__submit,
+.mt-search-empty__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border: 1px solid #202020;
+    border-radius: 0;
+    padding: 0 22px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.mt-search-empty__submit,
+.mt-search-empty__button--primary {
+    background: #202020;
+    color: #ffffff;
+}
+
+.mt-search-empty__button {
+    background: #ffffff;
+    color: #202020;
+}
+
+.mt-search-empty__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+    .mt-search-empty {
+        margin: 28px auto 48px;
+        padding: 0 16px;
+    }
+
+    .mt-search-empty__inner {
+        padding: 30px 18px;
+    }
+
+    .mt-search-empty__title {
+        font-size: 26px;
+    }
+
+    .mt-search-empty__form {
+        grid-template-columns: 1fr;
+    }
+
+    .mt-search-empty__submit,
+    .mt-search-empty__button {
+        width: 100%;
+        white-space: normal;
+    }
+
+    .mt-search-empty__actions {
+        flex-direction: column;
+    }
+}
