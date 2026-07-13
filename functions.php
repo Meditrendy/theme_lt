@@ -180,8 +180,10 @@ function meditrendy_child_styles() {
 
         $meditrendy_select_size_label = 'Pasirinkite dydį';
 
-        if ( function_exists( 'pll_current_language' ) ) {
-            $meditrendy_language = pll_current_language( 'slug' );
+        if ( function_exists( 'meditrendy_core_current_language' ) || function_exists( 'pll_current_language' ) ) {
+            $meditrendy_language = function_exists( 'meditrendy_core_current_language' )
+                ? meditrendy_core_current_language()
+                : pll_current_language( 'slug' );
 
             if ( 'lv' === $meditrendy_language ) {
                 $meditrendy_select_size_label = 'Izvēlieties izmēru';
@@ -363,7 +365,9 @@ function meditrendy_search_empty_copy() {
         ),
     );
 
-    $language = function_exists( 'pll_current_language' ) ? pll_current_language( 'slug' ) : 'lt';
+    $language = function_exists( 'meditrendy_core_current_language' )
+        ? meditrendy_core_current_language()
+        : ( function_exists( 'pll_current_language' ) ? pll_current_language( 'slug' ) : 'lt' );
 
     if ( 'ee' === $language ) {
         $language = 'et';
@@ -598,13 +602,17 @@ add_shortcode('preset_icons', 'mt_preset_icons');
    ========================================= */
 add_filter('gettext', function($translated, $text, $domain) {
     if ($text === 'You may also likeâ€¦') {
-        if (pll_current_language() === 'pl') {
+        $language = function_exists('meditrendy_core_current_language')
+            ? meditrendy_core_current_language()
+            : (function_exists('pll_current_language') ? pll_current_language() : 'lt');
+
+        if ($language === 'pl') {
             return 'MoĹĽe Ci siÄ™ spodobaÄ‡';
         }
-        if (pll_current_language() === 'lt') {
+        if ($language === 'lt') {
             return 'Jums taip pat gali patikti';
         }
-        if (pll_current_language() === 'en') {
+        if ($language === 'en') {
             return 'You may also like';
         }
     }
