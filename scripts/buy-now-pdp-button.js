@@ -57,10 +57,33 @@
                 .removeAttr('aria-disabled')
                 .removeClass('disabled woosb-disabled');
         });
+    }
 
-        $('.woosb-wrap, .woosb-products, form.cart').each(function () {
-            $(this).removeClass('disabled woosb-disabled');
+    let activeButtonRefreshQueued = false;
+
+    function scheduleKeepButtonsActive(delay) {
+        if (delay) {
+            setTimeout(scheduleKeepButtonsActive, delay);
+            return;
+        }
+
+        if (activeButtonRefreshQueued) {
+            return;
+        }
+
+        activeButtonRefreshQueued = true;
+
+        window.requestAnimationFrame(function () {
+            activeButtonRefreshQueued = false;
+            keepButtonsActive();
         });
+    }
+
+    let bundleAlertOverrideTimer = 0;
+
+    function scheduleObservedBundleAlertOverride() {
+        clearTimeout(bundleAlertOverrideTimer);
+        bundleAlertOverrideTimer = setTimeout(overrideBundleAlertText, 100);
     }
 
     function showTooltip(button) {
@@ -357,7 +380,7 @@
         scheduleBundleAlertOverride();
 
         const observer = new MutationObserver(function () {
-            keepButtonsActive();
+            scheduleKeepButtonsActive();
         });
 
         getButtons().each(function () {
@@ -368,16 +391,16 @@
         });
 
         if (document.body) {
-            const alertObserver = new MutationObserver(overrideBundleAlertText);
+            const alertObserver = new MutationObserver(scheduleObservedBundleAlertOverride);
 
             alertObserver.observe(document.body, {
                 childList: true,
-                subtree: true,
-                characterData: true
+                subtree: true
             });
         }
 
-        setInterval(keepButtonsActive, 500);
+        scheduleKeepButtonsActive(500);
+        scheduleKeepButtonsActive(1500);
         window.addEventListener('load', scheduleBundleAlertOverride);
     });
 })(jQuery);
