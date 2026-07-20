@@ -942,6 +942,11 @@ Breadcrumbs
     pointer-events: auto !important;
 }
 
+/* The custom size tooltip below handles incomplete bundle selections. */
+.single-product .woosb-alert {
+    display: none !important;
+}
+
 .mt-size-tooltip {
     position: absolute;
     z-index: 99999;

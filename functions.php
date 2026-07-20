@@ -505,12 +505,6 @@ function mt_preset_accordion() {
     $details_field  = get_field_object('details_fit', $preset_id);
     $delivery_field = get_field_object('delivery_info', $preset_id);
 
-    if (function_exists('meditrendy_preset_translated_field')) {
-        $fabric_field = meditrendy_preset_translated_field($preset_id, 'fabric', $fabric_field);
-        $details_field = meditrendy_preset_translated_field($preset_id, 'details_fit', $details_field);
-        $delivery_field = meditrendy_preset_translated_field($preset_id, 'delivery_info', $delivery_field);
-    }
-
     ob_start();
     ?>
 
