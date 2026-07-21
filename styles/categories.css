@@ -243,6 +243,10 @@
     color: #101828;
 }
 
+.mt-product-category-description.mt-product-category-description--paged {
+    display: none !important;
+}
+
 .mt-product-category-description-inner {
     padding-top: 24px;
     border-top: 1px solid #e4e7ec;
