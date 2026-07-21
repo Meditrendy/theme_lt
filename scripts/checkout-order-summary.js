@@ -54,8 +54,17 @@
     });
   }
 
+  function markDuplicateMobileSummaries() {
+    document.querySelectorAll(summarySelector).forEach(function (summary, index) {
+      summary.classList.toggle('meditrendy-checkout-order-summary--mobile-duplicate', index > 0);
+    });
+  }
+
   function scheduleExpand() {
-    window.requestAnimationFrame(expandOrderSummary);
+    window.requestAnimationFrame(function () {
+      expandOrderSummary();
+      markDuplicateMobileSummaries();
+    });
   }
 
   if (document.readyState === 'loading') {

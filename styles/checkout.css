@@ -118,6 +118,10 @@ form.checkout .meditrendy-checkout-terms-consent a:focus-visible {
 }
 
 @media (max-width: 600px) {
+    .wp-block-woocommerce-checkout-order-summary-block.meditrendy-checkout-order-summary--mobile-duplicate {
+        display: none;
+    }
+
     .meditrendy-checkout-invoice-fields__row {
         grid-template-columns: 1fr;
     }
