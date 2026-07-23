@@ -15,6 +15,7 @@ Breadcrumbs
     align-items: center;
     gap: 8px;
     flex-wrap: nowrap;
+    padding-left: 2px;
 }
 
 .single-product .products .mt-swatch-more {
