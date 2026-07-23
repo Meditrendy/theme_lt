@@ -262,6 +262,10 @@
     margin-bottom: 0;
 }
 
+.mt-product-category-description-inner h1 {
+    font-size: 1.35rem;
+}
+
 .mt-product-category-description-inner h2,
 .mt-product-category-description-inner h3,
 .mt-product-category-description-inner h4 {

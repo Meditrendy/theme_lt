@@ -1,0 +1,54 @@
+/* =========================================
+   Site-wide typography
+   ========================================= */
+
+body,
+body :is(
+    address,
+    article,
+    aside,
+    blockquote,
+    button,
+    caption,
+    cite,
+    code,
+    dd,
+    details,
+    div,
+    dl,
+    dt,
+    em,
+    figcaption,
+    footer,
+    form,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    header,
+    input,
+    label,
+    legend,
+    li,
+    main,
+    nav,
+    option,
+    p,
+    section,
+    select,
+    small,
+    span,
+    strong,
+    summary,
+    table,
+    td,
+    textarea,
+    th,
+    time,
+    a
+):not(.x-icon):not(.x-icon *):not(.fa):not(.fab):not(.fad):not(.fal):not(.far):not(.fas):not(.fat) {
+    font-family: "Raleway", sans-serif !important;
+    letter-spacing: normal !important;
+}

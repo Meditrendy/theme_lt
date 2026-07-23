@@ -609,3 +609,30 @@ add_action('wp_enqueue_scripts', function() {
         do_action('dgwt/wcas/scripts');
     }
 });
+
+/**
+ * Load the site-wide brand typeface after Pro and Cornerstone styles.
+ */
+add_action( 'wp_enqueue_scripts', 'meditrendy_enqueue_raleway_typography', 999 );
+
+function meditrendy_enqueue_raleway_typography() {
+    $typography_css_path = get_stylesheet_directory() . '/styles/typography.css';
+
+    if ( ! file_exists( $typography_css_path ) ) {
+        return;
+    }
+
+    wp_enqueue_style(
+        'meditrendy-raleway-font',
+        'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap',
+        array(),
+        null
+    );
+
+    wp_enqueue_style(
+        'meditrendy-typography',
+        get_stylesheet_directory_uri() . '/styles/typography.css',
+        array( 'meditrendy-raleway-font' ),
+        filemtime( $typography_css_path )
+    );
+}

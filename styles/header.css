@@ -47,7 +47,6 @@
     width: 52px;
     height: 48px;
     border: 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 0;
     padding: 0;
     background: transparent;
@@ -88,7 +87,7 @@
 }
 
 .menu-item .x-anchor .x-anchor-content .x-anchor-text-primary {
-    line-height: 1.5;
+    line-height: 1.2;
     color: #08437f;
 }
 
@@ -110,6 +109,14 @@
 
 .x-off-canvas ul.x-menu-collapsed > li > a.x-anchor {
     min-height: 40px !important;
+}
+
+.x-off-canvas .sub-menu .menu-item .x-anchor > .x-anchor-content > .x-anchor-text {
+    margin-left: 35px;
+
+    .x-anchor-text-primary {
+        font-size: 14px !important;
+    }
 }
 
 .x-off-canvas ul.x-menu-collapsed > li > a.x-anchor .x-anchor-content {
