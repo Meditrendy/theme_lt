@@ -630,6 +630,13 @@ function meditrendy_enqueue_raleway_typography() {
     );
 
     wp_enqueue_style(
+        'meditrendy-worksans-font',
+        'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap',
+        array(),
+        null
+    );
+
+    wp_enqueue_style(
         'meditrendy-typography',
         get_stylesheet_directory_uri() . '/styles/typography.css',
         array( 'meditrendy-raleway-font' ),

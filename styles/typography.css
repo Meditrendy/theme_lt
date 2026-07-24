@@ -49,6 +49,6 @@ body :is(
     time,
     a
 ):not(.x-icon):not(.x-icon *):not(.fa):not(.fab):not(.fad):not(.fal):not(.far):not(.fas):not(.fat) {
-    font-family: "Raleway", sans-serif !important;
+    font-family: "Work Sans", "Raleway", sans-serif !important;
     letter-spacing: normal !important;
 }
