@@ -29,7 +29,7 @@
 .x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split > a.mt-mobile-parent-link {
     display: block !important;
     min-width: 0;
-    padding-right: 56px !important;
+    padding-right: 44px !important;
 }
 
 .x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split > a.mt-mobile-parent-link .x-anchor-sub-indicator {
@@ -44,8 +44,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 52px;
-    height: 48px;
+    width: 60px;
+    height: 30px;
     border: 0;
     border-radius: 0;
     padding: 0;
@@ -60,30 +60,18 @@
 }
 
 .x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split > .mt-mobile-submenu-toggle span {
-    position: relative;
-    width: 16px;
-    height: 16px;
-}
-
-.x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split > .mt-mobile-submenu-toggle span::before,
-.x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split > .mt-mobile-submenu-toggle span::after {
-    content: "";
-    position: absolute;
-    top: 7px;
-    left: 2px;
-    width: 12px;
-    height: 2px;
-    border-radius: 999px;
-    background: currentColor;
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transform-origin: center;
     transition: transform 160ms ease;
 }
 
-.x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split > .mt-mobile-submenu-toggle span::after {
-    transform: rotate(90deg);
-}
-
-.x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split > .mt-mobile-submenu-toggle[aria-expanded="true"] span::after {
-    transform: rotate(0deg);
+.x-off-canvas ul.x-menu-collapsed > li.mt-mobile-parent-split > .mt-mobile-submenu-toggle[aria-expanded="true"] span {
+    transform: rotate(-135deg);
 }
 
 .menu-item .x-anchor .x-anchor-content .x-anchor-text-primary {
@@ -91,8 +79,12 @@
     color: #08437f;
 }
 
+.x-off-canvas .menu-item .x-anchor .x-anchor-content {
+    margin: 0;
+}
+
 .x-off-canvas .menu-item .x-anchor .x-anchor-content .x-anchor-text-primary {
-    font-size: 16px !important;
+    font-size: 14px !important;
 }
 
 .x-off-canvas .x-tabs-list button,
@@ -108,11 +100,15 @@
 }
 
 .x-off-canvas ul.x-menu-collapsed > li > a.x-anchor {
-    min-height: 40px !important;
+    box-sizing: border-box;
+    height: 36px !important;
+    min-height: 36px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .x-off-canvas .sub-menu .menu-item .x-anchor > .x-anchor-content > .x-anchor-text {
-    margin-left: 35px;
+    margin-left: 34px;
 
     .x-anchor-text-primary {
         font-size: 14px !important;
@@ -371,4 +367,16 @@ Mobile SVG logo
     max-width: 140px !important;
     height: auto !important;
   }
+}
+
+.x-off-canvas .sub-menu .menu-item > a.x-anchor {
+    box-sizing: border-box;
+    height: 30px !important;
+    min-height: 30px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.x-off-canvas .sub-menu .menu-item .x-anchor .x-anchor-text-primary {
+    font-weight: 400 !important;
 }
