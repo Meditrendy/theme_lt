@@ -2,7 +2,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 require_once get_stylesheet_directory() . '/modules/mobile-menu.php';
-require_once get_stylesheet_directory() . '/modules/desktop-menu.php';
 
 add_filter( 'gettext', 'meditrendy_translate_404_text', 20, 3 );
 
