@@ -643,3 +643,40 @@ function meditrendy_enqueue_raleway_typography() {
         filemtime( $typography_css_path )
     );
 }
+
+
+add_shortcode( 'product_brand_logo', function () {
+
+    global $product;
+
+    if ( ! $product ) {
+        return '';
+    }
+
+    $brands = wp_get_post_terms( $product->get_id(), 'product_brand' );
+
+    if ( empty( $brands ) || is_wp_error( $brands ) ) {
+        return '';
+    }
+
+    $brand = $brands[0];
+
+    $image_id = get_term_meta( $brand->term_id, 'thumbnail_id', true );
+
+    if ( ! $image_id ) {
+        return '';
+    }
+
+    return sprintf(
+        '<a href="%s" class="product-brand-logo">%s</a>',
+        esc_url( get_term_link( $brand ) ),
+        wp_get_attachment_image(
+            $image_id,
+            'full',
+            false,
+            array(
+                'class' => 'brand-logo'
+            )
+        )
+    );
+});
