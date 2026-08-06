@@ -426,6 +426,23 @@ function meditrendy_search_empty_state_shortcode() {
     product quantity 
    ========================================= */
 
+/**
+ * Keep the quantity value visible on product pages.
+ *
+ * WooCommerce renders the field as hidden when the current maximum quantity is
+ * one. For variable products, that initial type is not changed after a
+ * variation with more stock is selected, leaving only the +/- buttons visible.
+ */
+add_filter( 'woocommerce_quantity_input_type', 'meditrendy_product_quantity_input_type' );
+
+function meditrendy_product_quantity_input_type( $type ) {
+    if ( is_product() && 'hidden' === $type ) {
+        return 'number';
+    }
+
+    return $type;
+}
+
 add_action('wp_footer', function() {
 ?>
 <script>
@@ -452,16 +469,22 @@ document.addEventListener("DOMContentLoaded", function() {
       qtyBox.appendChild(plus);
 
       minus.addEventListener('click', function(){
-          let current = parseInt(input.value) || 1;
-          if(current > 1){
-              input.value = current - 1;
+          const min = input.min === '' ? 1 : Number(input.min);
+          const step = input.step === '' ? 1 : Number(input.step);
+          const current = Number(input.value) || min;
+
+          if(current > min){
+              input.value = Math.max(min, current - step);
               input.dispatchEvent(new Event('change'));
           }
       });
 
       plus.addEventListener('click', function(){
-          let current = parseInt(input.value) || 1;
-          input.value = current + 1;
+          const max = input.max === '' ? Infinity : Number(input.max);
+          const step = input.step === '' ? 1 : Number(input.step);
+          const current = Number(input.value) || 1;
+
+          input.value = Math.min(max, current + step);
           input.dispatchEvent(new Event('change'));
       });
 
