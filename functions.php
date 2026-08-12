@@ -253,7 +253,9 @@ function meditrendy_should_enqueue_category_styles() {
 }
 
 function meditrendy_should_enqueue_blog_styles() {
-    if ( is_home() || is_category() || is_tag() || is_date() || is_author() || is_singular( 'post' ) || is_page_template( 'template-blog-archive.php' ) ) {
+    // Cornerstone stores shortcode elements outside the page's post_content,
+    // so has_shortcode() cannot reliably detect the homepage blog section.
+    if ( is_front_page() || is_home() || is_category() || is_tag() || is_date() || is_author() || is_singular( 'post' ) || is_page_template( 'template-blog-archive.php' ) ) {
         return true;
     }
 
