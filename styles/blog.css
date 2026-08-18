@@ -415,6 +415,10 @@
         font-size: 18px;
     }
 
+    .mt-blog-card-image {
+        object-position: center top;
+    }
+
     .mt-blog-home-copy {
         margin-bottom: 46px;
     }
@@ -438,6 +442,10 @@
 
     .mt-blog-home-item:first-child .mt-blog-home-item-media {
         aspect-ratio: 1.32 / 1;
+    }
+
+    .mt-blog-home-item:first-child .mt-blog-home-item-image {
+        object-position: center top;
     }
 
     .mt-blog-home-item-title {
