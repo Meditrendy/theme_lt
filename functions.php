@@ -26,6 +26,7 @@ function meditrendy_translate_404_text( $translation, $text, $domain ) {
  * Replace legacy Lithuanian labels that remain in the Latvian homepage layout.
  */
 add_filter( 'the_content', 'meditrendy_translate_latvian_homepage_labels', 99 );
+add_filter( 'rank_math/frontend/description', 'meditrendy_translate_latvian_homepage_labels', 99 );
 
 function meditrendy_translate_latvian_homepage_labels( $content ) {
     if ( ! is_front_page() || strtolower( substr( determine_locale(), 0, 2 ) ) !== 'lv' ) {
