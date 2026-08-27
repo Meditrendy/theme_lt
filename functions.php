@@ -23,6 +23,33 @@ function meditrendy_translate_404_text( $translation, $text, $domain ) {
 }
 
 /**
+ * Replace legacy Lithuanian labels that remain in the Latvian homepage layout.
+ */
+add_filter( 'the_content', 'meditrendy_translate_latvian_homepage_labels', 99 );
+
+function meditrendy_translate_latvian_homepage_labels( $content ) {
+    if ( ! is_front_page() || strtolower( substr( determine_locale(), 0, 2 ) ) !== 'lv' ) {
+        return $content;
+    }
+
+    return str_replace(
+        array(
+            'Naršyti',
+            'pagal kategoriją',
+            'MOTERMIS',
+            'VYRAMS',
+        ),
+        array(
+            'Pārlūkot',
+            'pēc kategorijām',
+            'SIEVIETĒM',
+            'VĪRIEŠIEM',
+        ),
+        $content
+    );
+}
+
+/**
  * Load parent + child styles and scripts
  */
 
