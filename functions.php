@@ -26,9 +26,6 @@ function meditrendy_translate_404_text( $translation, $text, $domain ) {
  * Replace legacy Lithuanian labels that remain in the Latvian homepage layout.
  */
 add_filter( 'the_content', 'meditrendy_translate_latvian_homepage_labels', 99 );
-add_filter( 'rank_math/frontend/description', 'meditrendy_translate_latvian_homepage_labels', 99 );
-add_filter( 'rank_math/opengraph/facebook/og_description', 'meditrendy_translate_latvian_homepage_labels', 99 );
-add_filter( 'rank_math/opengraph/twitter/twitter_description', 'meditrendy_translate_latvian_homepage_labels', 99 );
 
 function meditrendy_translate_latvian_homepage_labels( $content ) {
     if ( ! is_front_page() || strtolower( substr( determine_locale(), 0, 2 ) ) !== 'lv' ) {
@@ -50,6 +47,17 @@ function meditrendy_translate_latvian_homepage_labels( $content ) {
         ),
         $content
     );
+}
+
+/**
+ * Let Rank Math own social metadata on the Latvian site to avoid duplicate Pro tags.
+ */
+add_action( 'wp', 'meditrendy_disable_latvian_pro_social_meta' );
+
+function meditrendy_disable_latvian_pro_social_meta() {
+    if ( defined( 'RANK_MATH_VERSION' ) && strtolower( substr( determine_locale(), 0, 2 ) ) === 'lv' ) {
+        remove_action( 'wp_head', 'x_social_meta', 2 );
+    }
 }
 
 /**
