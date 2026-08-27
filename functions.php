@@ -35,11 +35,13 @@ function meditrendy_translate_latvian_homepage_labels( $content ) {
     return str_replace(
         array(
             'Naršyti',
+            'Nar&scaron;yti',
             'pagal kategoriją',
             'MOTERMIS',
             'VYRAMS',
         ),
         array(
+            'Pārlūkot',
             'Pārlūkot',
             'pēc kategorijām',
             'SIEVIETĒM',
