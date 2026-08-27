@@ -220,6 +220,14 @@ function meditrendy_child_styles() {
     $cart_shipping_js_path = get_stylesheet_directory() . '/scripts/cart-shipping-loading.js';
 
     if ( $is_cart_or_checkout && file_exists( $cart_shipping_js_path ) ) {
+        $site_language = strtolower( substr( determine_locale(), 0, 2 ) );
+        $shipping_loading_labels = array(
+            'et' => 'Tarneviisi uuendatakse...',
+            'lt' => 'Atnaujinamas pristatymas...',
+            'lv' => 'Tiek atjaunināta piegāde...',
+            'pl' => 'Aktualizowanie dostawy...',
+        );
+
         wp_enqueue_script(
             'meditrendy-cart-shipping-loading',
             get_stylesheet_directory_uri() . '/scripts/cart-shipping-loading.js',
@@ -232,7 +240,7 @@ function meditrendy_child_styles() {
             'meditrendy-cart-shipping-loading',
             'MeditrendyCartShippingLoading',
             array(
-                'label' => 'Atnaujinamas pristatymas...',
+                'label' => $shipping_loading_labels[ $site_language ] ?? $shipping_loading_labels['lt'],
             )
         );
     }

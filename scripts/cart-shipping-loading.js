@@ -1,6 +1,6 @@
 (function () {
     const config = window.MeditrendyCartShippingLoading || {};
-    const label = config.label || 'Atnaujinamas pristatymas...';
+    const label = config.label || '';
     const shippingSelector = '#shipping-option, .wc-block-checkout__shipping-option, .wc-block-components-totals-shipping';
 
     let activeRoot = null;
