@@ -1,0 +1,262 @@
+/* Shared layout for the editable informational landing pages. */
+.mt-lp-block {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto 18px;
+    color: #17324d;
+    font-family: inherit;
+}
+
+.mt-lp-block * {
+    box-sizing: border-box;
+}
+
+.mt-lp-banner {
+    margin-bottom: 26px;
+}
+
+.mt-lp-banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+}
+
+.mt-lp-intro {
+    max-width: 900px;
+    margin-bottom: 24px;
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.55;
+    text-align: center;
+}
+
+.mt-lp-section-title {
+    margin: 28px auto 16px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.mt-lp-card,
+.mt-lp-line {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 88px;
+    padding: 14px 24px;
+    border: 1px solid #c9ddef;
+    background: #fff;
+}
+
+.mt-lp-card + .mt-lp-card {
+    margin-top: 12px;
+}
+
+.mt-lp-icon {
+    display: flex;
+    flex: 0 0 64px;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #edf6fb;
+}
+
+.mt-lp-icon img {
+    display: block;
+    max-width: 42px;
+    max-height: 42px;
+    object-fit: contain;
+}
+
+.mt-lp-copy {
+    flex: 1;
+    min-width: 0;
+}
+
+.mt-lp-copy h3 {
+    margin: 0 0 5px;
+    color: #123c67;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.mt-lp-copy p,
+.mt-lp-copy li {
+    margin: 0;
+    color: #344f68;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.mt-lp-copy p + p {
+    margin-top: 4px;
+}
+
+.mt-lp-copy a {
+    color: #0e5b91;
+    text-decoration: underline;
+}
+
+.mt-lp-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.mt-lp-grid-2 .mt-lp-card {
+    height: 100%;
+    margin: 0;
+}
+
+.mt-lp-group {
+    padding: 0;
+    border: 1px solid #c9ddef;
+    background: #fff;
+}
+
+.mt-lp-group .mt-lp-line {
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid #c9ddef;
+}
+
+.mt-lp-group .mt-lp-line:last-child {
+    border-bottom: 0;
+}
+
+.mt-lp-number {
+    display: flex;
+    flex: 0 0 42px;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #0e4f84;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.mt-lp-note {
+    padding: 18px 24px;
+    border: 1px solid #c9ddef;
+    background: #f7fbfe;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.mt-lp-note ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.mt-lp-note li + li {
+    margin-top: 5px;
+}
+
+.mt-lp-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 24px auto;
+    text-align: center;
+}
+
+.mt-lp-social::before,
+.mt-lp-social::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #c9ddef;
+}
+
+.mt-lp-social a {
+    color: #0e4f84;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.mt-lp-address {
+    font-style: normal;
+}
+
+.mt-lp-button {
+    display: inline-block;
+    margin-top: 9px;
+    padding: 8px 15px;
+    background: #0e4f84;
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none !important;
+    text-transform: uppercase;
+}
+
+/* Keep banners and cards compact on phones while preserving editability. */
+@media (max-width: 767px) {
+    .mt-lp-block {
+        margin-bottom: 14px;
+    }
+
+    .mt-lp-banner {
+        width: calc(100% + 30px);
+        margin-right: -15px;
+        margin-bottom: 20px;
+        margin-left: -15px;
+    }
+
+    .mt-lp-intro {
+        padding: 0 8px;
+        font-size: 14px;
+    }
+
+    .mt-lp-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .mt-lp-card,
+    .mt-lp-line {
+        align-items: flex-start;
+        gap: 14px;
+        min-height: 0;
+        padding: 14px;
+    }
+
+    .mt-lp-icon {
+        flex-basis: 54px;
+        width: 54px;
+        height: 54px;
+    }
+
+    .mt-lp-icon img {
+        max-width: 36px;
+        max-height: 36px;
+    }
+
+    .mt-lp-copy h3 {
+        font-size: 14px;
+    }
+
+    .mt-lp-copy p,
+    .mt-lp-copy li {
+        font-size: 12.5px;
+    }
+
+    .mt-lp-section-title {
+        margin-top: 22px;
+        font-size: 16px;
+    }
+}

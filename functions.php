@@ -80,6 +80,17 @@ function meditrendy_child_styles() {
         );
     }
 
+    $landing_pages_css_path = get_stylesheet_directory() . '/styles/landing-pages.css';
+
+    if ( is_page( array( 4896, 24605, 24927, 24931 ) ) && file_exists( $landing_pages_css_path ) ) {
+        wp_enqueue_style(
+            'meditrendy-landing-pages',
+            get_stylesheet_directory_uri() . '/styles/landing-pages.css',
+            array(),
+            filemtime( $landing_pages_css_path )
+        );
+    }
+
     $marketing_banner_css_path = get_stylesheet_directory() . '/styles/marketing-banner.css';
 
     if (
