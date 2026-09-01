@@ -95,6 +95,13 @@ body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-co
     object-fit: contain;
 }
 
+.mt-lp-icon svg {
+    display: block;
+    width: 42px;
+    height: 42px;
+    color: #073d72;
+}
+
 .mt-lp-copy {
     flex: 1;
     min-width: 0;
@@ -274,6 +281,11 @@ body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-co
     .mt-lp-icon img {
         max-width: 36px;
         max-height: 36px;
+    }
+
+    .mt-lp-icon svg {
+        width: 36px;
+        height: 36px;
     }
 
     .mt-lp-copy h3 {
