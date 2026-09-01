@@ -1,4 +1,22 @@
 /* Shared layout for the editable informational landing pages. */
+body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-wrap {
+    padding-top: 24px;
+}
+
+body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-header {
+    margin-bottom: 20px;
+}
+
+body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-title {
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-content > .x-section {
+    padding-top: 0;
+    padding-bottom: 38px;
+}
+
 .mt-lp-block {
     box-sizing: border-box;
     width: 100%;
@@ -207,6 +225,18 @@
 
 /* Keep banners and cards compact on phones while preserving editability. */
 @media (max-width: 767px) {
+    body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-wrap {
+        padding-top: 18px;
+    }
+
+    body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-header {
+        margin-bottom: 14px;
+    }
+
+    body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-title {
+        font-size: 27px;
+    }
+
     .mt-lp-block {
         margin-bottom: 14px;
     }
