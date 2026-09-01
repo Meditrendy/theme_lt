@@ -65,3 +65,4 @@ Use existing files when the change naturally belongs there. Add a new file only 
 
 - If a change is intended to apply across sites, it belongs in `meditrendy-core`, including shared checkout/cart UI, reusable CSS, JavaScript, and WooCommerce behavior.
 - If a change is specific to this website's theme, branding, layout, or content, it belongs here.
+- Prepare and version theme changes in this repository, but do not deploy, upload, or replace the production theme unless the user explicitly requests a specific deployment method. Assume the user will transfer theme files to production via FTP when no deployment method has been requested, and do not invent a substitute deployment workflow.
