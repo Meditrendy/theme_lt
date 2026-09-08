@@ -82,11 +82,7 @@ function meditrendy_child_styles() {
 
     $landing_pages_css_path = get_stylesheet_directory() . '/styles/landing-pages.css';
 
-    if (
-        'lt' === strtolower( substr( determine_locale(), 0, 2 ) ) &&
-        is_page( array( 4896, 24605, 24927, 24931 ) ) &&
-        file_exists( $landing_pages_css_path )
-    ) {
+    if ( file_exists( $landing_pages_css_path ) ) {
         wp_enqueue_style(
             'meditrendy-landing-pages',
             get_stylesheet_directory_uri() . '/styles/landing-pages.css',
@@ -179,8 +175,10 @@ function meditrendy_child_styles() {
     }
 
     $homepage_css_path = get_stylesheet_directory() . '/styles/homepage.css';
+    $is_homepage_context = is_front_page() || is_page_template( 'template-cornerstone-canvas.php' );
+    $is_product_context = function_exists( 'is_product' ) && is_product();
 
-    if ( ( is_front_page() || is_page_template( 'template-cornerstone-canvas.php' ) ) && file_exists( $homepage_css_path ) ) {
+    if ( ( $is_homepage_context || $is_product_context ) && file_exists( $homepage_css_path ) ) {
         wp_enqueue_style(
             'meditrendy-homepage',
             get_stylesheet_directory_uri() . '/styles/homepage.css',
@@ -190,7 +188,7 @@ function meditrendy_child_styles() {
 
         $homepage_js_path = get_stylesheet_directory() . '/scripts/homepage.js';
 
-        if ( file_exists( $homepage_js_path ) ) {
+        if ( $is_homepage_context && file_exists( $homepage_js_path ) ) {
             wp_enqueue_script(
                 'meditrendy-homepage',
                 get_stylesheet_directory_uri() . '/scripts/homepage.js',
