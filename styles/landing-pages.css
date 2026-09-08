@@ -42,6 +42,16 @@ body:is(.page-id-4896, .page-id-24605, .page-id-24927, .page-id-24931) .entry-co
     border-radius: 0;
 }
 
+/* Contact page: join the banner and form row without the two-pixel overlap. */
+body:is(.page-id-24931, .page-id-17852) .x-row:has(.mt-lp-banner) .mt-lp-banner {
+    margin-bottom: 0;
+}
+
+body:is(.page-id-24931, .page-id-17852) .x-row:has(.mt-lp-banner) + .x-row,
+body:is(.page-id-24931, .page-id-17852) .mt-lp-banner + .x-row {
+    margin-top: 0 !important;
+}
+
 .mt-lp-intro {
     max-width: 900px;
     margin-bottom: 24px;
