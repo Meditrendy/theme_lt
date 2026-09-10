@@ -1,6 +1,15 @@
-/* Shared layout for the editable informational landing pages. */
-.entry-wrap:has(.mt-lp-block) {
-    padding-top: 24px;
+/* Normalize informational pages across Pro stacks (Icon and Integrity). */
+body.page .x-container.offset:has(.entry-wrap .mt-lp-block) {
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+body.page .entry-wrap:has(.mt-lp-block) {
+    padding: 50px 0;
+    background-color: transparent;
+    box-shadow: none;
 }
 
 .entry-wrap:has(.mt-lp-block) .entry-header {
@@ -8,8 +17,17 @@
 }
 
 .entry-wrap:has(.mt-lp-block) .entry-title {
+    box-sizing: border-box;
+    width: 88%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 20px;
+    color: #004f9f;
     font-size: 30px;
+    font-weight: 700;
     line-height: 1.2;
+    text-align: center;
 }
 
 .entry-wrap:has(.mt-lp-block) .entry-content > .x-section {
@@ -511,8 +529,8 @@ body:is(.page-id-24931, .page-id-17852) .mt-lp-banner + .x-row {
 
 /* Keep banners and cards compact on phones while preserving editability. */
 @media (max-width: 767px) {
-    .entry-wrap:has(.mt-lp-block) {
-        padding-top: 18px;
+    body.page .entry-wrap:has(.mt-lp-block) {
+        padding: 18px 0;
     }
 
     .entry-wrap:has(.mt-lp-block) .entry-header {
