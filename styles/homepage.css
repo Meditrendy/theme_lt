@@ -208,12 +208,28 @@
     display: none;
 }
 
+/* Show more color options at once on tablets while retaining a scroll cue. */
+@media (min-width: 768px) and (max-width: 979px) {
+    .mt-home-color-carousel .mt-home-color-carousel__track > .x-col {
+        flex-basis: calc((100% - 48px) / 3.5) !important;
+        width: calc((100% - 48px) / 3.5) !important;
+        max-width: calc((100% - 48px) / 3.5) !important;
+    }
+}
+
 @media (min-width: 980px) {
-    .mt-home-color-carousel__row {
+    .mt-home-color-carousel .x-row.mt-home-color-carousel__row {
         --mt-home-color-size: clamp(118px, 11.5vw, 150px);
         --mt-home-color-gap: clamp(20px, 3vw, 48px);
-        justify-content: center;
-        gap: 16px;
+        box-sizing: border-box !important;
+        justify-content: center !important;
+        width: 100vw !important;
+        max-width: none !important;
+        margin-right: calc(50% - 50vw) !important;
+        margin-left: calc(50% - 50vw) !important;
+        padding-right: clamp(24px, 4vw, 64px) !important;
+        padding-left: clamp(24px, 4vw, 64px) !important;
+        gap: 16px !important;
     }
 
     .mt-home-color-carousel__button {
@@ -262,11 +278,11 @@
         cursor: default;
     }
 
-    .mt-home-color-carousel__track {
-        flex: 0 1 auto;
-        width: auto;
-        max-width: 942px;
-        gap: var(--mt-home-color-gap);
+    .mt-home-color-carousel .mt-home-color-carousel__row > .x-row-inner.mt-home-color-carousel__track {
+        flex: 1 1 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        gap: var(--mt-home-color-gap) !important;
     }
 
     .mt-home-color-carousel__track > .x-col {
