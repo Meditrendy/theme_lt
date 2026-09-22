@@ -558,56 +558,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <?php
 });
-function mt_preset_accordion() {
-
-    $post_id = get_the_ID();
-    $preset_id = get_field('preset', $post_id);
-
-    if (!$preset_id) return '';
-
-    $fabric_field   = get_field_object('fabric', $preset_id);
-    $details_field  = get_field_object('details_fit', $preset_id);
-    $delivery_field = get_field_object('delivery_info', $preset_id);
-
-    ob_start();
-    ?>
-
-    <div class="mt-accordion">
-
-        <?php if (!empty($details_field['value'])): ?>
-        <details>
-            <summary><?php echo esc_html($details_field['label']); ?></summary>
-            <div class="acc-content">
-                <?php echo wp_kses_post($details_field['value']); ?>
-            </div>
-        </details>
-        <?php endif; ?>
-
-        <?php if (!empty($fabric_field['value'])): ?>
-        <details>
-            <summary><?php echo esc_html($fabric_field['label']); ?></summary>
-            <div class="acc-content">
-                <?php echo wp_kses_post($fabric_field['value']); ?>
-            </div>
-        </details>
-        <?php endif; ?>
-
-        <?php if (!empty($delivery_field['value'])): ?>
-        <details>
-            <summary><?php echo esc_html($delivery_field['label']); ?></summary>
-            <div class="acc-content">
-                <?php echo wp_kses_post($delivery_field['value']); ?>
-            </div>
-        </details>
-        <?php endif; ?>
-
-    </div>
-
-    <?php
-    return ob_get_clean();
-}
-
-add_shortcode('preset_accordion', 'mt_preset_accordion');
 /* =========================================
    PRESET ICONS (REPEATER)
    ========================================= */
