@@ -114,6 +114,27 @@ Breadcrumbs
     text-align: center;
 }
 
+/* Keep bundled-product variation labels beside their swatch buttons. */
+.single-product .woosb-products .woosb-product .variations_form .variations {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.single-product .woosb-products .woosb-product .variations_form .variations .variation {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+    margin: 5px 0 0;
+}
+
+.single-product .woosb-products .woosb-product .variations_form .variations .variation > .label,
+.single-product .woosb-products .woosb-product .variations_form .variations .variation > .value {
+    min-width: 0;
+}
+
 /************************
  Product description
  ************************/
