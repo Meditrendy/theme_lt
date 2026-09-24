@@ -14,6 +14,7 @@ This repository contains the Meditrendy child theme for the Pro theme. Treat it 
 
 ## Project Conventions
 
+- Do not create Git commits, push branches, or open pull requests unless the user explicitly requests that action in the current conversation. Leave completed changes uncommitted by default.
 - Frontend/customer-facing labels should stay Lithuanian unless the user asks otherwise.
 - Admin/editor-facing labels may be English or Polish.
 - Prefer stable custom classes and existing theme modules over styling generated Cornerstone classes such as `m1q-*` or `e246-*`.
