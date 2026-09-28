@@ -22,8 +22,8 @@ Breadcrumbs
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 28px;
-    min-width: 28px;
+    height: 30px;
+    min-width: 30px;
     padding: 0 10px;
     border: 1px solid #d8dce2;
     border-radius: 999px;
@@ -140,7 +140,7 @@ Breadcrumbs
  ************************/
 .single-product .x-wc-add-to-cart-form + .x-text-headline + .x-text.x-content,
 .single-product .x-wc-add-to-cart-form + .x-text-headline + .x-text.x-content p {
-    font-size: 1.2rem !important;
+    font-size: 1.4rem !important;
 }
 
 /************************
@@ -475,8 +475,8 @@ Breadcrumbs
 
 .mt-complete-set-title {
     margin: 0 0 16px;
-    color: #07111f;
-    font-size: 1.5rem;
+    color: #000000;
+    font-size: 1.4rem;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
@@ -504,7 +504,7 @@ Breadcrumbs
 
 .mt-complete-set-name {
     display: inline-block;
-    color: #07111f;
+    color: #000000;
     font-family: "Open Sans", sans-serif;
     font-size: 15px;
     font-weight: 300;
@@ -526,7 +526,7 @@ Breadcrumbs
 }
 
 .mt-complete-set-color span {
-    color: #07111f;
+    color: #000000;
     font-weight: 700;
 }
 
@@ -560,7 +560,7 @@ Breadcrumbs
 }
 
 .mt-complete-set-form .variations .label {
-    color: #07111f;
+    color: #000000;
     font-size: 12px;
     font-weight: 700;
     line-height: 1.25;
@@ -570,7 +570,7 @@ Breadcrumbs
 .mt-complete-set-form .variations select {
     width: 100%;
     min-height: 44px;
-    border: 1px solid #07111f;
+    border: 1px solid #000000;
     border-radius: 4px;
     background-color: #ffffff;
     color: #07111f;
@@ -592,10 +592,10 @@ Breadcrumbs
     gap: 8px;
     width: 100%;
     min-height: 48px;
-    border: 1px solid #07111f !important;
+    border: 1px solid #000000 !important;
     border-radius: 4px !important;
     background: #ffffff !important;
-    color: #07111f !important;
+    color: #000000 !important;
     font-size: 13px !important;
     font-weight: 700 !important;
     line-height: 1.2 !important;
@@ -605,7 +605,7 @@ Breadcrumbs
 
 .mt-complete-set-button:hover,
 .mt-complete-set-button:focus-visible {
-    background: #07111f !important;
+    background: #000000 !important;
     color: #ffffff !important;
     outline: none;
 }
@@ -715,7 +715,7 @@ Breadcrumbs
 }
 
 .pswp__counter {
-    color: #07111f !important;
+    color: #000000!important;
 }
 
 .pswp__button {
@@ -824,7 +824,7 @@ Breadcrumbs
 
     .woocommerce-product-gallery .flex-direction-nav .flex-prev::before,
     .woocommerce-product-gallery .flex-direction-nav .flex-next::before {
-        color: #07111f;
+        color: #000000;
     }
 }
 
@@ -834,7 +834,7 @@ Breadcrumbs
 .mt-accordion {
     width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
-    color: #07111f;
+    color: #000000;
 }
 
 .mt-accordion details {
@@ -850,7 +850,7 @@ Breadcrumbs
     min-height: 50px;
     margin: 0;
     padding: 0 44px 0 0 !important;
-    color: #07111f;
+    color: #000000;
     font-size: 15px;
     font-weight: 700;
     line-height: 1.35;
@@ -895,7 +895,7 @@ Breadcrumbs
 .mt-accordion .acc-content {
     padding: 0 48px 16px 0;
     color: #344054;
-    font-size: 1.2rem !important;
+    font-size: 1.4rem !important;
     line-height: 1.65;
     letter-spacing: 0;
 }
